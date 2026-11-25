@@ -10,7 +10,7 @@ from PIL import Image
 from torch.utils.data import Dataset, DataLoader
 from .data import read_manifest, verify_bundle
 from .metrics import Counts, perturb, normalize, load_uap
-from .provenance import sha256, write_json, git_identity, digest, check_upstream
+from .provenance import sha256, write_json, git_identity, digest, check_upstream, ROOT
 from .registry import load_target
 
 
@@ -56,7 +56,7 @@ def evaluate(args):
     out = Path(args.output)
     out.mkdir(parents=True, exist_ok=False)
     run_id = 'eval-' + uuid.uuid4().hex[:12]
-    provenance = dict(git_identity(), run_id=run_id, status='running', error_reason=None,
+    provenance = dict(git_identity(), evaluation_implementation_sha256=digest({p:sha256(ROOT / p) for p in ['psp_research/evaluator.py','psp_research/data.py','psp_research/metrics.py','psp_research/registry.py']}), run_id=run_id, status='running', error_reason=None,
                       execution_label='target_only_evaluation', precision='float32',
                       environment={'torch': torch.__version__, 'torchvision': md.version('torchvision'), 'pillow': md.version('pillow'), 'python': platform.python_version(), 'cuda': torch.version.cuda, 'tf32': False})
     write_json(out / 'provenance.json', provenance)

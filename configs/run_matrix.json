@@ -1,0 +1,103 @@
+{
+  "budget_per_run": 10000,
+  "fixed_before_final_targets": true,
+  "protocol_id": "research_fixed_budget_v1",
+  "requires_verified_E0_before_full": true,
+  "runs": [
+    {
+      "config": "configs/experiments/e2_noise_crops.json",
+      "output": "outputs/e2_noise_crops-126",
+      "seed": 126,
+      "variant": "e2_noise_crops"
+    },
+    {
+      "config": "configs/experiments/e2_noise_crops.json",
+      "output": "outputs/e2_noise_crops-2025",
+      "seed": 2025,
+      "variant": "e2_noise_crops"
+    },
+    {
+      "config": "configs/experiments/e2_noise_crops.json",
+      "output": "outputs/e2_noise_crops-3407",
+      "seed": 3407,
+      "variant": "e2_noise_crops"
+    },
+    {
+      "config": "configs/experiments/e2_psp_only.json",
+      "output": "outputs/e2_psp_only-126",
+      "seed": 126,
+      "variant": "e2_psp_only"
+    },
+    {
+      "config": "configs/experiments/e2_psp_only.json",
+      "output": "outputs/e2_psp_only-2025",
+      "seed": 2025,
+      "variant": "e2_psp_only"
+    },
+    {
+      "config": "configs/experiments/e2_psp_only.json",
+      "output": "outputs/e2_psp_only-3407",
+      "seed": 3407,
+      "variant": "e2_psp_only"
+    },
+    {
+      "config": "configs/experiments/full_original.json",
+      "output": "outputs/full_original-126",
+      "seed": 126,
+      "variant": "full_original"
+    },
+    {
+      "config": "configs/experiments/full_original.json",
+      "output": "outputs/full_original-2025",
+      "seed": 2025,
+      "variant": "full_original"
+    },
+    {
+      "config": "configs/experiments/full_original.json",
+      "output": "outputs/full_original-3407",
+      "seed": 3407,
+      "variant": "full_original"
+    },
+    {
+      "config": "configs/experiments/full_local.json",
+      "output": "outputs/full_local-126",
+      "seed": 126,
+      "variant": "full_local"
+    },
+    {
+      "config": "configs/experiments/full_local.json",
+      "output": "outputs/full_local-2025",
+      "seed": 2025,
+      "variant": "full_local"
+    },
+    {
+      "config": "configs/experiments/full_local.json",
+      "output": "outputs/full_local-3407",
+      "seed": 3407,
+      "variant": "full_local"
+    },
+    {
+      "config": "configs/experiments/full_large.json",
+      "output": "outputs/full_large-126",
+      "seed": 126,
+      "variant": "full_large"
+    },
+    {
+      "config": "configs/experiments/full_large.json",
+      "output": "outputs/full_large-2025",
+      "seed": 2025,
+      "variant": "full_large"
+    },
+    {
+      "config": "configs/experiments/full_large.json",
+      "output": "outputs/full_large-3407",
+      "seed": 3407,
+      "variant": "full_large"
+    }
+  ],
+  "seeds": [
+    126,
+    2025,
+    3407
+  ]
+}

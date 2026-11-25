@@ -1,0 +1,42 @@
+{
+  "angle": 6.0,
+  "aspect_ratio": [
+    0.75,
+    1.3333333333333333
+  ],
+  "checkpoint_every": 200,
+  "checkpoint_selection": "final_iterate",
+  "crop_area": [
+    0.5,
+    1
+  ],
+  "delta_size": 224,
+  "epsilon": 0.0392156862745098,
+  "init": "uniform",
+  "input_transform": true,
+  "lr": 0.1,
+  "max_steps": 10000,
+  "normalization_space_for_delta": "raw_RGB_0_1",
+  "num_copies_per_prior": 10,
+  "optimizer": "Adam",
+  "p_active": true,
+  "p_rate": 0.65,
+  "prior": "jigsaw",
+  "prior_behavior": "upstream_unchanged",
+  "protocol_id": "research_fixed_budget_v1",
+  "re_weight": true,
+  "scale_t_high": 4.0,
+  "scale_t_low": 0.8,
+  "seeds": [
+    126,
+    2025,
+    3407
+  ],
+  "shuffle_block": 2,
+  "source_mode": "psp_crops",
+  "surrogate": "resnet152",
+  "surrogate_weights": "ResNet152_Weights.IMAGENET1K_V1",
+  "target_tuning": false,
+  "temper": 3.0,
+  "variant": "full_large"
+}

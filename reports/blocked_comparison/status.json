@@ -1,0 +1,12 @@
+{
+  "expected_target_records": 90,
+  "expected_training_runs": 15,
+  "note": "Missing/failed/duplicate/unmatched results are never zero-filled. No max-FR selection.",
+  "record_counts": {
+    "ambiguous_duplicate": 0,
+    "complete": 0,
+    "missing": 90
+  },
+  "rejected_records": 0,
+  "status": "incomplete"
+}
