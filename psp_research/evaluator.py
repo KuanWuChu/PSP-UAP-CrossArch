@@ -2,6 +2,8 @@ import csv
 import json
 import time
 import uuid
+import importlib.metadata as md
+import platform
 from pathlib import Path
 import torch
 from PIL import Image
@@ -56,10 +58,12 @@ def evaluate(args):
     run_id = 'eval-' + uuid.uuid4().hex[:12]
     provenance = dict(git_identity(), run_id=run_id, status='running', error_reason=None,
                       execution_label='target_only_evaluation', precision='float32',
-                      environment={'torch': torch.__version__, 'cuda': torch.version.cuda})
+                      environment={'torch': torch.__version__, 'torchvision': md.version('torchvision'), 'pillow': md.version('pillow'), 'python': platform.python_version(), 'cuda': torch.version.cuda, 'tf32': False})
     write_json(out / 'provenance.json', provenance)
     try:
         check_upstream()
+        torch.backends.cuda.matmul.allow_tf32 = False
+        torch.backends.cudnn.allow_tf32 = False
         if not 0 < args.epsilon <= 1 or args.batch_size < 1 or args.workers < 0:
             raise ValueError('invalid epsilon/batch size/workers')
         index = verify_bundle(Path(args.manifest).parent)
@@ -82,8 +86,28 @@ def evaluate(args):
                           split=split, stage=args.stage, epsilon=args.epsilon,
                           weights_lock_sha256=sha256(args.weights_lock), data_source=index['source'])
         protocol = dict(split=split, manifest_sha256=provenance['manifest_sha256'],
-                        epsilon=args.epsilon, geometry='checkpoint_native_224', precision='float32')
+                        epsilon=args.epsilon, geometry='checkpoint_native_224', precision='float32', environment=provenance['environment'])
         provenance['protocol_id'] = 'e1-' + digest(protocol)[:16]
+        provenance.update(training_run_id=None, variant=None, source_mode=None, surrogate=None,
+                          seed=None, step=None, t_on=None, rw_on=None, crop_min=None, crop_max=None)
+        training_record = getattr(args, 'training_record', None)
+        if training_record:
+            from .config import validate
+            training = json.loads(Path(training_record).read_text())
+            config = validate(training['config'])
+            if (training['status'] != 'complete' or training.get('uap_sha256') != provenance['uap_sha256'] or
+                training.get('manifest_hashes') != index['manifest_hashes'] or config['epsilon'] != args.epsilon):
+                raise ValueError('training record/UAP/manifest/epsilon mismatch')
+            if args.stage == 'final' and (training['purpose'] != 'full' or training['step'] != config['max_steps']):
+                raise ValueError('smoke or incomplete training cannot become a formal final evaluation')
+            provenance.update(training_run_id=training['run_id'], variant=config['variant'],
+                source_mode=config['source_mode'], surrogate=config['surrogate'], seed=training['seed'],
+                step=training['step'], t_on=config['input_transform'], rw_on=config['re_weight'],
+                crop_min=config['crop_area'][0], crop_max=config['crop_area'][1],
+                training_config=config, training_weights_sha256=training['weights_sha256'],
+                training_record_sha256=sha256(training_record), purpose=training['purpose'],
+                exogenous_draws_sha256=training.get('exogenous_draws_sha256'), prior_draws_sha256=training.get('prior_draws_sha256'),
+                training_implementation_sha256=training.get('training_implementation_sha256'))
         write_json(out / 'config.resolved.json', dict(protocol, targets=args.targets,
                    batch_size=args.batch_size, workers=args.workers, stage=args.stage))
         for target in args.targets:

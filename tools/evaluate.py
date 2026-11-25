@@ -7,6 +7,7 @@ from psp_research.evaluator import evaluate
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--uap', required=True)
+    p.add_argument('--training-record', help='trainer provenance.json; verifies UAP/data identity and exports contrast metadata')
     p.add_argument('--data-root', required=True)
     p.add_argument('--manifest', required=True)
     p.add_argument('--targets', nargs='+', choices=TARGETS, default=[t for t in TARGETS if t != 'resnet152'])
