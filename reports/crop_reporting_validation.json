@@ -1,0 +1,27 @@
+{
+  "blocked_status_table": "reports/blocked_comparison/status.json",
+  "blockers": [
+    "licensed ImageNet validation path",
+    "official ILSVRC2012 devkit path",
+    "real CNN-trained UAP"
+  ],
+  "checks": [
+    "E3 configs differ only in crop area and variant; actual sampled areas checked",
+    "raw counts and metric identities; reject smoke, failed, bad hashes, inconsistent metadata",
+    "E2 B-A and E3 paired delta checks; enforce matching weights/data/budget/draws",
+    "three-seed mean and sample std; blank missing cells; duplicate records rejected",
+    "all earlier foundation/trainer tests pass; upstream eight-file integrity PASS",
+    "all CLI help, compileall and diff whitespace checks PASS"
+  ],
+  "command": "OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 .venv/bin/python -m pytest -q --basetemp outputs/final-cpu-fixtures",
+  "fixture_uap": {
+    "path": "outputs/final-cpu-fixtures/test_run_partial_then_resume_e0/final/uap.npy",
+    "purpose": "CPU toy-model resume test ONLY; not a trained research UAP",
+    "sha256": "9ba546923b9277877ecf8b7cdab3559f02cb4436aa8d8575563d80cd5beac18e"
+  },
+  "formal_experiments": "E0/E1/E2/E3 NOT_RUN",
+  "loss_sha256": "6855a7310c30fbd5bddfefbdb9ca84c2c5732a9aaaecfc316657b4fb8f108982",
+  "pytest": "45 passed",
+  "status": "CPU_FIXTURES_PASS",
+  "weights_lock_sha256": "d5e2544442bf7135d571be19f7c15594eafa9879191864d0d81a4b2e42c571e0"
+}
