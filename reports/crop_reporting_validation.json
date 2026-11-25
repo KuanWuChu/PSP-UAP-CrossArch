@@ -21,7 +21,7 @@
   },
   "formal_experiments": "E0/E1/E2/E3 NOT_RUN",
   "loss_sha256": "6855a7310c30fbd5bddfefbdb9ca84c2c5732a9aaaecfc316657b4fb8f108982",
-  "pytest": "45 passed in 1.89s",
+  "pytest": "45 passed",
   "status": "CPU_FIXTURES_PASS",
   "weights_lock_sha256": "d5e2544442bf7135d571be19f7c15594eafa9879191864d0d81a4b2e42c571e0"
 }

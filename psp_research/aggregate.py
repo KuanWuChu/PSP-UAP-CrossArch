@@ -92,7 +92,7 @@ def write_csv(path, rows):
     rows = list(rows)
     keys = list(dict.fromkeys(k for r in rows for k in r))
     with Path(path).open('w',newline='') as f:
-        writer=csv.DictWriter(f,fieldnames=keys)
+        writer=csv.DictWriter(f,fieldnames=keys,lineterminator='\n')
         writer.writeheader(); writer.writerows(rows)
 
 

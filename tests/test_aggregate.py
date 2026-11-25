@@ -49,6 +49,7 @@ def test_missing_is_blank_never_zero(tmp_path):
     out=tmp_path/'out'
     result=aggregate(root,out,['resnet50'])
     assert result['record_counts']==dict(complete=0,missing=15,ambiguous_duplicate=0)
+    assert b'\r' not in (out/'seed_metrics.csv').read_bytes()
     with (out/'seed_metrics.csv').open() as f:
         rows=list(csv.DictReader(f))
     assert len(rows)==15 and all(r['fr']=='' and r['status']=='missing' for r in rows)
