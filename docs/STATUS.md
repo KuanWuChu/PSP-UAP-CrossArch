@@ -1,16 +1,20 @@
-# Handoff status — 2026-11-25
+# Implementation status — 2026-11-26
 
 | Item | State |
 |---|---|
-| Upstream source verified + clone | COMPLETE |
-| MIT license retained | COMPLETE |
-| Original source hashes recorded | COMPLETE |
-| Development protocol + remote prompt | COMPLETE |
-| Bootstrap/integrity helper checks | PASS — source hashes, Python syntax, Bash syntax, planned config consistency, document links; remote publishing not executed |
-| Public fork on GitHub | NOT_CREATED — browser not signed in and available GitHub connector lacks fork endpoint |
-| User collaborator invitations | NOT_REQUESTED — user will add teammates later |
-| Research CLI / evaluator / new trainer | NOT_IMPLEMENTED |
-| GPU smoke / E0 / E1 / E2 / E3 | NOT_RUN |
-| Paper reproduction claim | NOT_ESTABLISHED |
+| Handoff ZIP / Git bundle | SHA256 VERIFIED; full history restored |
+| Public native fork | VERIFIED: KuanWuChu/PSP-UAP-CrossArch; public; parent ChanhuiLee1111/PSP-UAP |
+| Bootstrap PR | Draft #1; planning branch and pinned upstream tag pushed |
+| Upstream protected files / MIT | PASS; all eight byte-identical |
+| Doctor / manifest builder / strict config | IMPLEMENTED; CPU fixtures |
+| Target registry / .npy evaluator | IMPLEMENTED; checkpoint lock records exact enums/transforms/full hashes |
+| Modern CUDA probe | PASS on RTX4090; torch2.5.1+cu121 / torchvision0.20.1+cu121 |
+| Faithful legacy environment | UNVALIDATED; modern route is separately labeled |
+| ImageNet / devkit / real manifests | BLOCKED: no dataset or devkit paths supplied |
+| CNN + ViT real-data evaluator smoke | BLOCKED: verified licensed dataset and real UAP unavailable |
+| Controlled trainer / E2 / E3 | NEXT PR; not part of foundation implementation |
+| E0 / E1 / E2 / E3 formal experiments | NOT_RUN; no paper reproduction claim |
+| Teammate invitations | Not performed; user manages invitations |
 
-The handoff branch contains planning and repo helpers only. Public-fork publication must be verified after login. Do not claim that a local `origin` URL proves a remote fork exists. `scripts/publish_fork.sh` must validate native fork parent and public visibility before pushing.
+See [executable tools runbook](TOOLS_RUNBOOK_ZH.md) for exact commands and artifact boundaries.
+CPU fixture metrics are software checks, not ImageNet measurements. Missing results are never filled with zeros.
