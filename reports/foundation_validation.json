@@ -1,0 +1,107 @@
+{
+  "blockers": [
+    "licensed ImageNet validation path",
+    "official devkit path",
+    "CNN-trained UAP for real E1 evaluation"
+  ],
+  "commands": [
+    ".venv/bin/python -m pytest -q",
+    ".venv/bin/python tools/check_models.py",
+    ".venv/bin/python tools/doctor.py --weights-lock configs/targets/weights.lock.json --weights-dir models_cache",
+    "python3 scripts/check_upstream_integrity.py"
+  ],
+  "compiled_arches": [
+    "sm_50",
+    "sm_60",
+    "sm_70",
+    "sm_75",
+    "sm_80",
+    "sm_86",
+    "sm_90"
+  ],
+  "cuda_available": true,
+  "cuda_kernel_probe": true,
+  "cuda_runtime": "12.1",
+  "data_status": "BLOCKED: ImageNet root not supplied",
+  "deit3": "OPTIONAL_NOT_CONFIGURED",
+  "execution_label": "modern_compatibility",
+  "faithful_e0": "NOT_RUN: original Python3.8/torch1.11/torchvision0.12/CUDA11.3 unvalidated",
+  "formal_experiments": "E0/E1/E2/E3 NOT_RUN",
+  "gpus": [
+    {
+      "capability": [
+        8,
+        9
+      ],
+      "name": "NVIDIA GeForce RTX 4090",
+      "vram_bytes": 25250627584
+    }
+  ],
+  "legacy_compatibility": "UNVALIDATED: Ada has no native sm89 in CUDA11.3; older Ampere/PTX kernels may work; torch1.11/cuDNN coverage not tested. Do not call modern run faithful.",
+  "loss_sha256": "6855a7310c30fbd5bddfefbdb9ca84c2c5732a9aaaecfc316657b4fb8f108982",
+  "nvidia_smi": "NVIDIA GeForce RTX 4090, 580.178.04, 24564 MiB",
+  "packages": {
+    "imageio": "2.36.1",
+    "numpy": "1.26.4",
+    "opencv-python": "4.10.0.84",
+    "pillow": "11.3.0",
+    "pytest": "8.3.4",
+    "scikit-image": "0.24.0",
+    "scipy": "1.15.3",
+    "torch": "2.5.1+cu121",
+    "torchvision": "0.20.1+cu121"
+  },
+  "python": "3.10.12",
+  "research_commit": "8a39c2ed2fb494555d2bc61f999f7b75affa84b2",
+  "torch": "2.5.1+cu121",
+  "torchvision": "0.20.1+cu121",
+  "upstream_commit": "dbbc4ee8ee66b6cd5286b939d7254fd7edcbfb8c",
+  "validation": {
+    "all_seven_checkpoint_cpu_fixtures": "PASS",
+    "cli_help": "PASS",
+    "compileall": "PASS",
+    "cpu_pytest": "22 passed",
+    "git_diff_check": "PASS",
+    "upstream_integrity": "8 files PASS",
+    "upstream_resnet50_FR_fixture_parity": "PASS for zero and bounded nonzero delta"
+  },
+  "weights": {
+    "convnext_base": {
+      "verified": true,
+      "weights_id": "ConvNeXt_Base_Weights.IMAGENET1K_V1",
+      "weights_sha256": "6075fbad31c688f9ed013922a59daf0fc2f4dc12e6e43bc01fa840c7bd1ca2cd"
+    },
+    "densenet121": {
+      "verified": true,
+      "weights_id": "DenseNet121_Weights.IMAGENET1K_V1",
+      "weights_sha256": "a639ec97d7c33b07ae66f0b5fb7d0192f95a3b11b7576c66c0126c2a727c4395"
+    },
+    "resnet152": {
+      "verified": true,
+      "weights_id": "ResNet152_Weights.IMAGENET1K_V1",
+      "weights_sha256": "394f9c45966e3651a89bbb78a48410a6755854ce4a5ab64927cf1c7247f85e58"
+    },
+    "resnet50": {
+      "verified": true,
+      "weights_id": "ResNet50_Weights.IMAGENET1K_V1",
+      "weights_sha256": "0676ba61b6795bbe1773cffd859882e5e297624d384b6993f7c9e683e722fb8a"
+    },
+    "swin_t": {
+      "verified": true,
+      "weights_id": "Swin_T_Weights.IMAGENET1K_V1",
+      "weights_sha256": "704ceda373461b0a224fcdddd75cd2a5e9f8064512ed47adbddef7f343fd147b"
+    },
+    "vgg16": {
+      "verified": true,
+      "weights_id": "VGG16_Weights.IMAGENET1K_V1",
+      "weights_sha256": "397923af8e79cdbb6a7127f12361acd7a2f83e06b05044ddf496e83de57a5bf0"
+    },
+    "vit_b_16": {
+      "verified": true,
+      "weights_id": "ViT_B_16_Weights.IMAGENET1K_V1",
+      "weights_sha256": "c867db91d3e12c6cbadabb610d73c24a546bf82d8c03a9fea34f43a712ddb0e9"
+    }
+  },
+  "weights_lock_sha256": "d5e2544442bf7135d571be19f7c15594eafa9879191864d0d81a4b2e42c571e0",
+  "working_tree_dirty": true
+}

@@ -188,3 +188,5 @@ cython_debug/
 *.zip
 .env.*
 !.env.example
+/manifests/
+/labels/

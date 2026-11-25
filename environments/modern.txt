@@ -1,0 +1,12 @@
+# Python 3.10; modern_compatibility only. CUDA wheels: --index-url https://download.pytorch.org/whl/cu121
+# Install torch/torchvision from the CUDA index first; remaining packages from PyPI.
+torch==2.5.1
+torchvision==0.20.1
+numpy==1.26.4
+Pillow==11.3.0
+scipy==1.15.3
+scikit-image==0.24.0
+opencv-python==4.10.0.84
+imageio==2.36.1
+tqdm==4.67.1
+pytest==8.3.4

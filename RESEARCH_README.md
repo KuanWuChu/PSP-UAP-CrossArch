@@ -2,11 +2,13 @@
 
 2026-11-25，115_1作業。這是以 CVPR 2025 PSP-UAP 官方程式為基礎的研究擴充計畫。
 
-**目前狀態：官方 repo 已完整 clone；本地規劃已完成；實驗程式尚未實作、GPU 訓練尚未執行、公開 fork 尚未建立或 push。**
+**2026-11-26：公開 native fork 已建立並驗證。基礎工具與 E1 evaluator 已實作；CPU fixtures 通過。尚缺合法 ImageNet／devkit 路徑與真正 UAP；正式 E0–E3 尚未執行。**
+
+實際可執行入口：[工具操作文件](docs/TOOLS_RUNBOOK_ZH.md)。最新分項狀態：[STATUS](docs/STATUS.md)。
 
 - 官方： https://github.com/ChanhuiLee1111/PSP-UAP
 - 固定原始 commit：`dbbc4ee8ee66b6cd5286b939d7254fd7edcbfb8c`
-- 預定公開 fork：`KuanWuChu/PSP-UAP-CrossArch`（這是預定名稱，不是已存在網址）
+- 預定公開 fork：[KuanWuChu/PSP-UAP-CrossArch](https://github.com/KuanWuChu/PSP-UAP-CrossArch)
 - 本地 branch：`plan/crossarch-handoff-20261125`
 - 原碼基準 tag：`research/upstream-20261125`
 - 授權：沿用官方 MIT License，保留作者著作權與論文引用。
