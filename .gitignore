@@ -172,3 +172,19 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Cross-architecture research local artifacts
+/data/
+/datasets/
+/outputs/
+/TorchHub/
+/models_cache/
+*.npy
+*.npz
+*.pt
+*.pth
+*.ckpt
+*.bundle
+*.zip
+.env.*
+!.env.example

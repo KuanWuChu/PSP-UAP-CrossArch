@@ -1,0 +1,43 @@
+{
+  "upstream_repository": "ChanhuiLee1111/PSP-UAP",
+  "upstream_commit": "dbbc4ee8ee66b6cd5286b939d7254fd7edcbfb8c",
+  "checked_at": "2026-11-25 Asia/Taipei",
+  "files": {
+    "LICENSE": {
+      "sha256": "aee23392f533965220a9a7a7577240b2aa8ef8d3f331f13c60e728e349790024",
+      "git_blob": "4f42239276a6b3b4f3e4f838d587e14a1a091afc"
+    },
+    "README.md": {
+      "sha256": "2f4b3e1771b42c99efbe450817bb7603ffd9df81b06cfb4411d6c1538f381875",
+      "git_blob": "dce569c8856ff7de5e3b0e505b5bc2093c22552b"
+    },
+    "main.py": {
+      "sha256": "36f39fc864a6d85f0bf6b4d13f01dff1eb580483bb69d4ec0a86e10ec5a08299",
+      "git_blob": "8c5a5ed74878316551c13d1006e277c7a84a5c9c"
+    },
+    "PSP_UAP.py": {
+      "sha256": "4fa71fc9e437458858077e3fedb9233063eddf4e7e7d573bfcde276196c44636",
+      "git_blob": "bb68800265dc157dc8728e0072057c937259b512"
+    },
+    "loss.py": {
+      "sha256": "6855a7310c30fbd5bddfefbdb9ca84c2c5732a9aaaecfc316657b4fb8f108982",
+      "git_blob": "c2fcc0d9e28af679da6ba568e362c2464e6056cc"
+    },
+    "functions.py": {
+      "sha256": "e46518330c17c2cbe37e98856b6ec78c196623d8068280175a5c2a47eb4aabfc",
+      "git_blob": "89cf7fc1265948262db1f2fd9d6a5abdc1dd1ca6"
+    },
+    "semantic_aug.py": {
+      "sha256": "2f50849181f4aeb380815796381bb1720ee8654ebf805c6d7271f9deef9c8667",
+      "git_blob": "e4de82321870a712244dcdceabd0c5155c46999e"
+    },
+    "strategy.py": {
+      "sha256": "47227861e84ed7b44fea87ef93044693655d096b272a1c515d2f3967c15b4bec",
+      "git_blob": "7491a00295d52ae61bb26e2414b22cbc720616a1"
+    },
+    ".gitignore": {
+      "sha256": "605915eaeeec6b0680f28426d46a99d6bb824f219f01632eb0166bcba3505a91",
+      "git_blob": "0a197900e25d259ab4af2e31e78501787d7a6daa"
+    }
+  }
+}
