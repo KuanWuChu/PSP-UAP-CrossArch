@@ -25,7 +25,7 @@ python3 scripts/check_upstream_integrity.py
 probe="$(gh api --silent -i "repos/${target}" 2>&1)" && probe_status=0 || probe_status=$?
 if [[ "$probe_status" -ne 0 ]]; then
   if [[ "$probe" == *'HTTP 404'* || "$probe" == *'HTTP/2.0 404'* || "$probe" == *'HTTP/1.1 404'* || "$probe" == *'(HTTP 404)'* ]]; then
-    gh repo fork "$parent" --fork-name "$fork_name" --clone=false --remote=false
+    gh repo fork "$parent" --fork-name "$fork_name" --clone=false
   else
     echo 'Repository lookup failed for a reason other than 404; stopping without creating a replacement.' >&2
     printf '%s\n' "$probe" >&2
