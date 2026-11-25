@@ -1,0 +1,26 @@
+{
+  "GPU_smoke": "BLOCKED: no verified ImageNet/devkit manifest bundle",
+  "checks": [
+    "detached sources: no prior gradient, exact outer delta gradient",
+    "A/B replay identical prior/crop draws despite extra transformation RNG consumption",
+    "CPU resume bitwise equality: delta, Adam, RNG, curriculum, saturation, losses",
+    "independent checkpoint snapshot; incomplete run exports no final UAP",
+    "original weighted objective plus transformations CPU finite fixture",
+    "nonfinite original loss fails without repair; model hashes unchanged",
+    "smoke training record rejected for formal final evaluation"
+  ],
+  "commands": [
+    "OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 .venv/bin/python -m pytest -q",
+    ".venv/bin/python tools/train.py --config configs/experiments/e2_noise_crops.json --seed 126 --dry-run"
+  ],
+  "experiments": {
+    "E0": "NOT_RUN",
+    "E1": "NOT_RUN",
+    "E2": "NOT_RUN",
+    "E3": "NOT_RUN"
+  },
+  "fixture_artifacts": "outputs/cpu-fixtures/",
+  "loss_sha256": "6855a7310c30fbd5bddfefbdb9ca84c2c5732a9aaaecfc316657b4fb8f108982",
+  "pytest": "33 passed",
+  "status": "CPU_FIXTURES_PASS"
+}

@@ -12,9 +12,11 @@
 | Faithful legacy environment | UNVALIDATED; modern route is separately labeled |
 | ImageNet / devkit / real manifests | BLOCKED: no dataset or devkit paths supplied |
 | CNN + ViT real-data evaluator smoke | BLOCKED: verified licensed dataset and real UAP unavailable |
-| Controlled trainer / E2 / E3 | NEXT PR; not part of foundation implementation |
+| Controlled trainer / E2 A/B/C | IMPLEMENTED; CPU detach/replay/immutable checkpoint/resume/finite fixtures PASS |
+| GPU 100–200 step trainer smoke | BLOCKED: no verified ImageNet/devkit manifest bundle |
+| E3 crop configs / aggregation | NEXT PR |
 | E0 / E1 / E2 / E3 formal experiments | NOT_RUN; no paper reproduction claim |
 | Teammate invitations | Not performed; user manages invitations |
 
-See [executable tools runbook](TOOLS_RUNBOOK_ZH.md) for exact commands and artifact boundaries.
+See [executable tools runbook](TOOLS_RUNBOOK_ZH.md) and [controlled trainer runbook](TRAINER_RUNBOOK_ZH.md) for exact commands and artifact boundaries.
 CPU fixture metrics are software checks, not ImageNet measurements. Missing results are never filled with zeros.

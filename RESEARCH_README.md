@@ -4,7 +4,7 @@
 
 **2026-11-26：公開 native fork 已建立並驗證。基礎工具與 E1 evaluator 已實作；CPU fixtures 通過。尚缺合法 ImageNet／devkit 路徑與真正 UAP；正式 E0–E3 尚未執行。**
 
-實際可執行入口：[工具操作文件](docs/TOOLS_RUNBOOK_ZH.md)。最新分項狀態：[STATUS](docs/STATUS.md)。
+實際可執行入口：[工具操作文件](docs/TOOLS_RUNBOOK_ZH.md)、[受控 trainer／E2](docs/TRAINER_RUNBOOK_ZH.md)。最新分項狀態：[STATUS](docs/STATUS.md)。
 
 - 官方： https://github.com/ChanhuiLee1111/PSP-UAP
 - 固定原始 commit：`dbbc4ee8ee66b6cd5286b939d7254fd7edcbfb8c`
