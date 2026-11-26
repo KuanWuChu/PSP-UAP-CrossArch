@@ -47,3 +47,16 @@ def test_comparisons_reject_different_training_numerical_modes():
     a['training_numerical_policy']={'deterministic_warn_only':False}
     b['training_numerical_policy']={'deterministic_warn_only':True}
     with pytest.raises(ValueError,match='identities'):paired_delta(a,b,'e2')
+
+
+def test_incomplete_matrix_cannot_export_final_results(tmp_path):
+    import subprocess,sys
+    matrix=tmp_path/'matrix';matrix.mkdir()
+    write_json(matrix/'status.json',dict(status='incomplete'))
+    write_json(tmp_path/'baseline.json',dict(baseline_checks_passed=False))
+    out=tmp_path/'public';artifact=tmp_path/'uaps.zip'
+    result=subprocess.run([sys.executable,'tools/package_results.py','--matrix',str(matrix),
+        '--baseline-record',str(tmp_path/'baseline.json'),'--execution-root',str(tmp_path),
+        '--output',str(out),'--artifact',str(artifact)],capture_output=True,text=True)
+    assert result.returncode!=0 and 'refusing partial final package' in result.stderr
+    assert not out.exists() and not artifact.exists()

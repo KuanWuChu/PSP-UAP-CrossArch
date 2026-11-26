@@ -81,6 +81,7 @@ def execute(a):
             clean_difference=clean_difference,paper_five_run_mean_fr_percent=paper_fr,
             single_seed_minus_paper_mean_pp=r['fr']*100-paper_fr)
     report.update(baseline_checks_passed=True,uap_path=uap.relative_to(ROOT).as_posix(),
+        native_execution=native,
         native_log_sha256=sha256(out/'native.log'),native_source_commit=UPSTREAM,
         baseline_checks=discrepancies,paper_comparison='Single seed; does not establish reproduction of paper five-run mean/std',
         paper_reference='https://openaccess.thecvf.com/content/CVPR2025/papers/Lee_Data-free_Universal_Adversarial_Perturbation_with_Pseudo-semantic_Prior_CVPR_2025_paper.pdf',

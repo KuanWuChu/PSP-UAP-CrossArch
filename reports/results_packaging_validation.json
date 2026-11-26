@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "Restrict test discovery to project tests; exclude local environments and worktrees",
+    "Reject incomplete matrix before creating a public final package",
+    "Comparison identity includes training numerical mode/environment",
+    "All8 upstream protected files byte-identical; prior verification PASS",
+    "Result formatter CLI help and compileall PASS"
+  ],
+  "command": "OMP_NUM_THREADS=1 .venv/bin/python -m pytest -q",
+  "full_matrix": "NOT_YET_STARTED: legacy E0 running",
+  "result": "71 passed in5.93s",
+  "scope": "Software validation only; complete-matrix plot/archive generation is not yet executed",
+  "source_freeze_for_experiments": "2fdf46e7610c8c4d184655f1246afe5e17587e0d",
+  "status": "CPU_FIXTURES_AND_PARTIAL_EXPORT_GUARD_PASS"
+}
