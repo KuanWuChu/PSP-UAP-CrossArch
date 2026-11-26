@@ -1,0 +1,11 @@
+{
+  "captured_at_utc": "2026-11-26T01:54:17.748180+00:00",
+  "cpu_tests": "72 passed in5.10s",
+  "formal_matrix": "NOT_STARTED: waiting for verified E0",
+  "github_publication": "PAUSED by user; automatic push/PR/release callback disabled",
+  "legacy_e0": "RUNNING in declared Ubuntu20.04 legacy core",
+  "matrix_source_commit": "2fdf46e7610c8c4d184655f1246afe5e17587e0d",
+  "modern_e0": "COMPLETE: original5-CNN50k native evaluation; see e0_modern_original.json",
+  "original_protected_files": "8-file integrity PASS",
+  "scope_note": "Local checkpoint only; no completed-matrix or paper five-run reproduction claim"
+}

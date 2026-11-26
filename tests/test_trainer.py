@@ -158,3 +158,26 @@ def test_resume_rejects_changed_numerical_policy(tmp_path):
             b.resume(tmp_path / 'strict.pt')
     finally:
         torch.use_deterministic_algorithms(previous[0], warn_only=previous[1])
+
+
+def test_original_first_teacher_updates_batchnorm_but_controlled_model_stays_frozen():
+    # Original prepare_for_model leaves training=True; weighted teacher runs before eval().
+    with torch.random.fork_rng():
+        torch.manual_seed(912)
+        model = nn.Sequential(nn.Conv2d(3,4,3,padding=1),nn.BatchNorm2d(4),nn.ReLU(),
+            nn.AdaptiveAvgPool2d((8,8)),nn.Flatten(),nn.Linear(256,5))
+        with torch.no_grad():model[-1].weight.mul_(20)
+        fresh = copy.deepcopy(model)
+        cfg = fixture_config(variant='full_original',source_mode='psp_crops',input_transform=True,re_weight=True)
+        runner = ControlledTrainer(fresh,cfg,126)
+        source = torch.rand(2,3,224,224) + 1
+        images = source + .02
+        before = model[1].running_mean.clone()
+        original_loss.l2_layer_loss_weight(model,images,source,runner.args,2,'cpu')
+        assert not torch.equal(before,model[1].running_mean)
+        assert not model.training and model[1].num_batches_tracked.item()==1
+        original_loss.l2_layer_loss_weight(model,images,source,runner.args,2,'cpu')
+        assert model[1].num_batches_tracked.item()==1
+        runner.advance()
+        assert runner.model[1].num_batches_tracked.item()==0
+        assert model_hash(runner.model)==runner.model_identity

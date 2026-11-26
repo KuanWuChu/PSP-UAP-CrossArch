@@ -20,6 +20,7 @@ Line numbers refer to unmodified upstream; use links with this fixed SHA.
 | no best_uap assignment if FR never exceeds 0 | PSP_UAP.py:28,117,137 | Research always initializes valid final checkpoint; faithful failure is recorded |
 | training validation overlap exists in upstream evaluation | PSP_UAP.py:42/114; functions.py:80–82; main.py:151 analyze=True | Faithful reports 50k-compatible table with selection overlap; research uses disjoint manifests |
 | FR is prediction flip, not ground-truth ASR | loss.py:151–175 | Add separate metrics outside original loss.py |
+| First weighted teacher forward precedes model.eval() | functions.py prepare_for_model returns default train mode; loss.py weighted teacher runs before eval | Original E0 preserves the first-step BatchNorm running-buffer update. Controlled research starts eval/frozen before any forward; this difference is explicit, not a fully faithful claim. CPU BN fixture verifies both behaviors. |
 | pretrained=True and common normalize function | functions.py:16–23,37–49; main.py:160 | Pin actual weights; separate target transform adapters |
 | parameter --target_model does not determine final target loop | main.py:19;94–98;150 | New evaluator should honor explicit --targets and print resolved model list |
 | input_transform False is not None | main.py:120/131 | Output naming in upstream can be misleading; store semantic config, do not infer variant from path |

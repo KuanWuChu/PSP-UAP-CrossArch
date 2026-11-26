@@ -2,7 +2,7 @@
 
 2026-11-25，115_1作業。這是以 CVPR 2025 PSP-UAP 官方程式為基礎的研究擴充計畫。
 
-**2026-11-26：公開 native fork 已驗證。Kaggle validation 全部 50,000 張已下載並驗證，標籤與固定 TFDS 版本逐張核對，manifests 已建立。71 項 CPU 測試、100-step ResNet152 相容模式及 CNN／ConvNeXt／Swin／ViT GPU smoke 通過。原始 devkit 已從保留授權聲明的公開副本取得，官方 MD5 與全部 mapping 核對通過；E0 官方原碼完整執行中，15-run研究矩陣待baseline驗證後啟動；尚未宣稱正式結果完成。**
+**2026-11-26：公開 native fork 已驗證。Kaggle validation 全部 50,000 張已下載並驗證，標籤與固定 TFDS 版本逐張核對，manifests 已建立。72 項 CPU 測試、100-step ResNet152 相容模式及 CNN／ConvNeXt／Swin／ViT GPU smoke 通過。原始 devkit 已從保留授權聲明的公開副本取得，官方 MD5 與全部 mapping 核對通過；E0 官方原碼完整執行中，15-run研究矩陣待baseline驗證後啟動；尚未宣稱正式結果完成。**
 
 完整實驗與GitHub維護入口：[FULL_EXECUTION](docs/FULL_EXECUTION_ZH.md)。
 

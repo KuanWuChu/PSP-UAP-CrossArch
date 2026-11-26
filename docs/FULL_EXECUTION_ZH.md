@@ -64,3 +64,5 @@ OMP_NUM_THREADS=4 .venv/bin/python tools/run_matrix.py --baseline-record outputs
 `tools/package_results.py`只接受獨立aggregate確認complete的矩陣，重新檢查15張UAP／90個target identities及原始E0 UAP；不完整時在建立final package之前失敗。完成後輸出CSV／原始計數JSON／mean與sample std／E1-E3 PNG與SVG，以及16張UAP的獨立ZIP/hash。ZIP不進Git，使用versioned draft release供審閱；結果以獨立draft PR交付，不自動merge。
 
 公開匯出採檔案白名單，且檢查個人路徑／token樣式；不包含ImageNet影像、分類權重或私有log。先前smoke與原始資料來源紀錄不回寫。`pytest.ini`限制project fixtures，避免掃入本機legacy環境和worktrees。71項CPU fixtures通過；這是軟體驗證，不是正式矩陣已完成。
+
+使用者目前要求暫停push；自動GitHub推送／PR／release callback已停用，本機產物保留。最新本機交接快照：`reports/execution_checkpoint.json`。查詢本機進度：`.venv/bin/python tools/experiment_status.py`。
