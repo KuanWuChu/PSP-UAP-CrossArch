@@ -27,6 +27,12 @@ Ubuntu20.04容器、Python3.8.20、torch1.11.0+cu113、torchvision0.12.0+cu113�
 .venv/bin/python tools/run_matrix.py --baseline-record outputs/full-experiments-20261126/baseline-validated.json --output outputs/full-experiments-20261126/matrix --dry-run
 ```
 
+在已建立legacy環境／runtime後，以下入口建立未改動的upstream worktree、執行官方完整流程、重新評估實際返回UAP，再核對native FR與獨立raw counts。每target native/reloaded FR差距上限0.2 percentage points、clean accuracy與同checkpoint官方reference差距上限2 percentage points，作為事先固定的工程一致性檢查；論文五seed平均另列，不用來調參。
+
+```bash
+.venv/bin/python tools/run_e0.py --output outputs/full-experiments-20261126/e0-legacy-original --legacy-prefix outputs/full-experiments-20261126/environment/legacy-py38 --baseline-record outputs/full-experiments-20261126/baseline-validated.json
+```
+
 五個官方baseline CNN的獨立checkpoint lock：
 
 ```bash
