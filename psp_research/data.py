@@ -1,5 +1,6 @@
 """Official devkit label checks and immutable disjoint validation manifests."""
 import csv
+import hashlib
 import io
 import json
 import random
@@ -10,10 +11,17 @@ from .provenance import sha256, write_json
 
 FIELDS = ['image_id', 'class_wnid', 'class_idx', 'file_sha256', 'split']
 SPLITS = ['selection', 'holdout', 'smoke_holdout']
+OFFICIAL_DEVKIT_MD5 = 'fa75699e90414af021442c21a62c3abf'
 
 
 def devkit_labels(devkit, output):
     from scipy.io import loadmat
+    checksum = hashlib.md5()
+    with open(devkit, 'rb') as f:
+        for block in iter(lambda: f.read(1024 * 1024), b''):
+            checksum.update(block)
+    if checksum.hexdigest() != OFFICIAL_DEVKIT_MD5:
+        raise ValueError('official devkit MD5 mismatch; refusing mapping extraction')
     output = Path(output)
     output.mkdir(parents=True, exist_ok=False)
     with tarfile.open(devkit) as tar:
@@ -35,6 +43,8 @@ def devkit_labels(devkit, output):
             raise ValueError('expected 50000 validation labels')
         (output / 'validation_wnids.txt').write_text('\n'.join(labels) + '\n')
     write_json(output / 'source.json', {'devkit_sha256': sha256(devkit),
+               'devkit_md5': checksum.hexdigest(), 'official_devkit_verified': True,
+               'label_source': 'official_devkit',
                'class_index_sha256': sha256(output / 'class_index.json'),
                'ground_truth_sha256': sha256(output / 'validation_wnids.txt')})
 

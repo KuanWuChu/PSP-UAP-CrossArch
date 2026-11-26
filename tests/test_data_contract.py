@@ -1,4 +1,5 @@
 import io
+import hashlib
 import json
 import tarfile
 from pathlib import Path
@@ -8,7 +9,7 @@ from scipy.io import savemat
 from psp_research.data import devkit_labels, make_manifests
 
 
-def test_official_devkit_shape_mapping_and_groundtruth(tmp_path):
+def test_official_devkit_shape_mapping_and_groundtruth(tmp_path, monkeypatch):
     # Synthetic devkit-format fixture, not ImageNet images or experiment data.
     meta = np.empty((1000,), dtype=object)
     for i in range(1000):
@@ -23,6 +24,8 @@ def test_official_devkit_shape_mapping_and_groundtruth(tmp_path):
             info.size = len(content)
             tar.addfile(info, io.BytesIO(content))
     labels = tmp_path / 'labels'
+    # Override only in this synthetic fixture; the real CLI requires the official MD5.
+    monkeypatch.setattr('psp_research.data.OFFICIAL_DEVKIT_MD5', hashlib.md5(tarpath.read_bytes()).hexdigest())
     devkit_labels(tarpath, labels)
     mapping = json.loads((labels / 'class_index.json').read_text())
     assert mapping['0'][0] == 'n00000001' and mapping['999'][0] == 'n00001000'
@@ -42,3 +45,11 @@ def test_official_devkit_shape_mapping_and_groundtruth(tmp_path):
     (labels / 'class_index.json').write_text('{}')
     with pytest.raises(ValueError, match='digest'):
         make_manifests(root, labels, tmp_path / 'out')
+
+
+def test_devkit_checksum_rejected_before_parsing(tmp_path):
+    bad = tmp_path / 'bad.tar.gz'
+    bad.write_bytes(b'not an official devkit')
+    with pytest.raises(ValueError, match='MD5 mismatch'):
+        devkit_labels(bad, tmp_path / 'labels')
+    assert not (tmp_path / 'labels').exists()
