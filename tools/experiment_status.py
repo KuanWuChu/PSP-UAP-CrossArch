@@ -16,7 +16,7 @@ if __name__=='__main__':
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--root',default='outputs/full-experiments-20261126')
     a=p.parse_args();root=Path(a.root)
-    result=dict(job=read(root/'job-status.json'),baseline_verified=(read(root/'baseline-validated.json') or {}).get('baseline_checks_passed',False),publication=read(root/'publication.json'))
+    result=dict(github_publication_paused=(read(root/'publication-paused.json') or {}).get('publication_paused',False),job=read(root/'job-status.json'),baseline_verified=(read(root/'baseline-validated.json') or {}).get('baseline_checks_passed',False),publication=read(root/'publication.json'))
     try:
         pid=int((root/'job.pid').read_text());os.kill(pid,0)
         result['controller_process_exists']=True
