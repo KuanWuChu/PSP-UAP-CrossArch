@@ -1,7 +1,8 @@
 """Inspect the authenticated competition ZIP with verified HTTP byte ranges.
 Signed URLs and API credentials stay in process memory and are never printed.
 """
-import io,json,re,sys,zipfile,time
+import io,json,re,sys,zipfile,time,os
+os.umask(0o077)
 import _bootstrap
 from pathlib import Path
 import requests
@@ -41,6 +42,7 @@ if __name__=='__main__':
     import argparse
     argparse.ArgumentParser(description=__doc__).parse_args()
     out=Path('outputs/kaggle-api')
+    out.mkdir(parents=True, exist_ok=True)
     api=KaggleApi();api.authenticate()
     with api.build_kaggle_client() as c:
         req=ApiDownloadDataFilesRequest();req.competition_name='imagenet-object-localization-challenge'

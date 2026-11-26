@@ -25,7 +25,7 @@ def main():
      url=response.url;length=int(response.headers['Content-Length']);etag=response.headers.get('ETag');response.close()
     if length!=record['zip_total_bytes'] or etag!=record['zip_etag']:raise RuntimeError('Archive version changed')
     
-    partsdir=Path('data/imagenet2012/kaggle_validation_parts');partsdir.mkdir(exist_ok=True)
+    partsdir=Path('data/imagenet2012/kaggle_validation_parts');partsdir.mkdir(parents=True,exist_ok=True)
     chunk_size=512*1024*1024
     span=record['contiguous_span_bytes'];begin=record['range_begin']
     specs=[dict(index=i,start=begin+offset,end_exclusive=begin+min(offset+chunk_size,span)) for i,offset in enumerate(range(0,span,chunk_size))]

@@ -29,6 +29,7 @@ C 的 weighted activation branch 與 A/B 的 unweighted branch 有原碼差異�
 - 原 synthetic-prior preprocessing／loss 輸入照原 helper，不擅自增加 normalization 或 image clipping。目標評估才使用 raw RGB add→clip→normalization。
 - 模型 `eval + requires_grad_(False)`，optimizer 僅有 delta；CPU fixture 驗證模型 tensor hash 不變。
 - loss／sample／gradient／optimizer state／delta NaN/Inf 會失敗並留下 failed 狀態，不修改 frozen loss 加 epsilon 修補。
+- 預設 `--determinism strict`。RTX4090／torch2.5.1 實測原 paired rotation 的 `grid_sampler_2d_backward_cuda` 在此模式第一步失敗。工程 smoke 可明確加 `--determinism warn`，保留原 transform 並接受 PyTorch 的 CUDA 非確定性警告；此模式目前限 `--smoke-steps`。數值模式寫入 provenance/checkpoint，resume 拒絕模式不同的 checkpoint，不宣稱 GPU bitwise replay。
 
 ## 命令
 

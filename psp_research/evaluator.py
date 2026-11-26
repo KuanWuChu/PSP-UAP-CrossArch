@@ -106,6 +106,7 @@ def evaluate(args):
                 crop_min=config['crop_area'][0], crop_max=config['crop_area'][1],
                 training_config=config, training_weights_sha256=training['weights_sha256'],
                 training_record_sha256=sha256(training_record), purpose=training['purpose'],
+                training_numerical_policy=training.get('environment', {}).get('numerical_policy'),
                 exogenous_draws_sha256=training.get('exogenous_draws_sha256'), prior_draws_sha256=training.get('prior_draws_sha256'),
                 training_implementation_sha256=training.get('training_implementation_sha256'))
         write_json(out / 'config.resolved.json', dict(protocol, targets=args.targets,
