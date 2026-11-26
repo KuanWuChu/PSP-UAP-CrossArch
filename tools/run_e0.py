@@ -35,7 +35,7 @@ def execute(a):
     if not native_status.exists():
         image_identity=subprocess.check_output(['docker','image','inspect',a.image,'--format','{{.Id}}'],text=True).strip()
         cmd=['docker','run','--rm','--gpus','all','--network','none','--user',f'{os.getuid()}:{os.getgid()}',
-            '--shm-size','4g','--mount',f'type=bind,src={Path(a.legacy_prefix).resolve()},dst=/opt/psp-legacy,readonly',
+            '--shm-size','16g','--mount',f'type=bind,src={Path(a.legacy_prefix).resolve()},dst=/opt/psp-legacy,readonly',
             '--mount',f'type=bind,src={source},dst=/work',
             '--mount',f'type=bind,src={Path(a.data_root).resolve()},dst=/data,readonly',
             '--mount',f'type=bind,src={Path(a.weights_dir).resolve()},dst=/work/TorchHub/checkpoints,readonly',
