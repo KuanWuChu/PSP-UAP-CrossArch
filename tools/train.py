@@ -16,11 +16,10 @@ from psp_research.data import verify_bundle
 from psp_research.provenance import git_identity, check_upstream, write_json, sha256, digest
 from psp_research.registry import load_target
 from psp_research.trainer import ControlledTrainer, numerical_policy
+from psp_research.execution import require_baseline
 
 
 def execute(a):
-    if a.determinism == 'warn' and not a.smoke_steps:
-        raise ValueError('warn-only determinism is currently allowed only for explicitly labeled --smoke-steps')
     c = load_config(a.config)
     if a.smoke_steps is not None:
         if not 1 <= a.smoke_steps <= 200:
@@ -50,6 +49,8 @@ def execute(a):
             raise ValueError('expected full ImageNet validation manifest bundle')
         provenance['manifest_hashes'] = index['manifest_hashes']
         provenance['data_source'] = index['source']
+        if not a.smoke_steps:
+            provenance.update(require_baseline(a.baseline_record,index['manifest_hashes']))
         torch.use_deterministic_algorithms(True, warn_only=a.determinism == 'warn')
         torch.backends.cudnn.benchmark = False
         torch.backends.cudnn.deterministic = True
@@ -95,6 +96,7 @@ if __name__ == '__main__':
     p.add_argument('--config', required=True)
     p.add_argument('--seed', type=int, choices=[126, 2025, 3407], required=True)
     p.add_argument('--manifest-dir')
+    p.add_argument('--baseline-record', help='validated E0 evidence required before full training')
     p.add_argument('--weights-lock', default='configs/targets/weights.lock.json')
     p.add_argument('--weights-dir', default='models_cache')
     p.add_argument('--output')
@@ -103,6 +105,6 @@ if __name__ == '__main__':
     p.add_argument('--stop-after', type=int, help='absolute step to stop early; incomplete runs export no final UAP')
     p.add_argument('--smoke-steps', type=int, help='separately labeled 1..200 step engineering smoke budget')
     p.add_argument('--determinism', choices=['strict', 'warn'], default='strict',
-        help='warn permits CUDA nondeterministic operators only in smoke; no bitwise GPU replay claim')
+        help='warn explicitly permits CUDA nondeterministic operators; numerical policy recorded, no bitwise GPU replay claim')
     p.add_argument('--dry-run', action='store_true')
     execute(p.parse_args())

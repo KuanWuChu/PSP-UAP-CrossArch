@@ -101,7 +101,7 @@ To repeat the100-step engineering run, use a new output directory:
 OMP_NUM_THREADS=4 .venv/bin/python tools/train.py --config configs/experiments/full_original.json --seed 126 --manifest-dir manifests/imagenet_val_kaggle_tfds_v1 --smoke-steps 100 --determinism warn --device cuda:0 --output outputs/recheck-psp-100
 ```
 
-Warn-only determinism is explicitly limited to smoke by the CLI. Numerical flags are preserved in checkpoints; a different policy is rejected at resume. `loss.py` remains unchanged. E0 and formal E1/E2/E3, final49000-image evaluation and full training remain NOT_RUN.
+During this historical smoke, warn-only mode was limited to smoke. The current full-execution CLI additionally permits it after verified E0 evidence; see FULL_EXECUTION_ZH.md. Numerical flags are preserved in checkpoints; a different policy is rejected at resume. `loss.py` remains unchanged. E0 and formal E1/E2/E3, final49000-image evaluation and full training remain NOT_RUN.
 
 ## Original Task1&2 devkit: historical blocker, now resolved
 

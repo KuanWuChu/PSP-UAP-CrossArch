@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "targets": {
+    "alexnet": {
+      "antialias": true,
+      "crop_size": [
+        224
+      ],
+      "dataset": "ImageNet-1k",
+      "family": "CNN",
+      "file_name": "alexnet-owt-7be5be79.pth",
+      "interpolation": "bilinear",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "resize_size": [
+        256
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "target": "alexnet",
+      "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+      "url": "https://download.pytorch.org/models/alexnet-owt-7be5be79.pth",
+      "weights_id": "AlexNet_Weights.IMAGENET1K_V1",
+      "weights_sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02"
+    },
+    "googlenet": {
+      "antialias": true,
+      "crop_size": [
+        224
+      ],
+      "dataset": "ImageNet-1k",
+      "family": "CNN",
+      "file_name": "googlenet-1378be20.pth",
+      "interpolation": "bilinear",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "resize_size": [
+        256
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "target": "googlenet",
+      "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+      "url": "https://download.pytorch.org/models/googlenet-1378be20.pth",
+      "weights_id": "GoogLeNet_Weights.IMAGENET1K_V1",
+      "weights_sha256": "1378be20a8e875cf1568b8a71654e704449655e34711a959a38b04fb34905cef"
+    },
+    "resnet152": {
+      "antialias": true,
+      "crop_size": [
+        224
+      ],
+      "dataset": "ImageNet-1k",
+      "family": "CNN",
+      "file_name": "resnet152-394f9c45.pth",
+      "interpolation": "bilinear",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "resize_size": [
+        256
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "target": "resnet152",
+      "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+      "url": "https://download.pytorch.org/models/resnet152-394f9c45.pth",
+      "weights_id": "ResNet152_Weights.IMAGENET1K_V1",
+      "weights_sha256": "394f9c45966e3651a89bbb78a48410a6755854ce4a5ab64927cf1c7247f85e58"
+    },
+    "vgg16": {
+      "antialias": true,
+      "crop_size": [
+        224
+      ],
+      "dataset": "ImageNet-1k",
+      "family": "CNN",
+      "file_name": "vgg16-397923af.pth",
+      "interpolation": "bilinear",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "resize_size": [
+        256
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "target": "vgg16",
+      "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+      "url": "https://download.pytorch.org/models/vgg16-397923af.pth",
+      "weights_id": "VGG16_Weights.IMAGENET1K_V1",
+      "weights_sha256": "397923af8e79cdbb6a7127f12361acd7a2f83e06b05044ddf496e83de57a5bf0"
+    },
+    "vgg19": {
+      "antialias": true,
+      "crop_size": [
+        224
+      ],
+      "dataset": "ImageNet-1k",
+      "family": "CNN",
+      "file_name": "vgg19-dcbb9e9d.pth",
+      "interpolation": "bilinear",
+      "mean": [
+        0.485,
+        0.456,
+        0.406
+      ],
+      "resize_size": [
+        256
+      ],
+      "std": [
+        0.229,
+        0.224,
+        0.225
+      ],
+      "target": "vgg19",
+      "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+      "url": "https://download.pytorch.org/models/vgg19-dcbb9e9d.pth",
+      "weights_id": "VGG19_Weights.IMAGENET1K_V1",
+      "weights_sha256": "dcbb9e9dad569fff7a846263a77324fc34978fea2bfb039c012d710e1776ae44"
+    }
+  }
+}

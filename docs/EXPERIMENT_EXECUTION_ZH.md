@@ -1,5 +1,7 @@
 # 已實作 E3 與結果彙整
 
+目前完整執行／baseline gate／實際資料路徑請使用 [FULL_EXECUTION](FULL_EXECUTION_ZH.md)。以下保留原協定；full trainer現在要求`--baseline-record`。
+
 三個完整 PSP 設定只改 **crop area** 與 variant 名稱；ratio 固定 [0.75,4/3]，T/RW 開啟：
 
 | config | area |
@@ -71,6 +73,6 @@ E3 除 crop area／variant 外設定須相同，累積 prior draw hash 須相同
 
 ## 本次執行狀態
 
-E0/E1/E2/E3 均未執行；沒有 real ImageNet manifests 或 CNN-trained UAP。
+初次實作時E0/E1/E2/E3尚未執行。現在資料／devkit／manifests／真實smoke UAP已具備，E0正在執行；正式矩陣最新狀態見STATUS。
 `reports/blocked_comparison/` 是對空的工程輸入目錄執行彙整後的 **缺失狀態表**：九十個 target records 全 missing、所有 FR／ΔFR／mean／std 均空白，不是研究結果。
 CPU analytic fixtures 包含為計數測試合成的 records；它們只存在測試暫存目錄，不納入該狀態表。

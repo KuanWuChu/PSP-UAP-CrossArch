@@ -16,10 +16,16 @@ TARGETS = {
     'swin_t': ('Swin_T_Weights', 'IMAGENET1K_V1', 'Swin'),
     'vit_b_16': ('ViT_B_16_Weights', 'IMAGENET1K_V1', 'ViT'),
 }
+E0_TARGETS = {
+    'alexnet': ('AlexNet_Weights', 'IMAGENET1K_V1', 'CNN'),
+    'vgg19': ('VGG19_Weights', 'IMAGENET1K_V1', 'CNN'),
+    'googlenet': ('GoogLeNet_Weights', 'IMAGENET1K_V1', 'CNN'),
+}
+E0_NAMES = ['alexnet', 'vgg16', 'vgg19', 'resnet152', 'googlenet']
 
 
 def specification(name):
-    enum, member, family = TARGETS[name]
+    enum, member, family = (TARGETS | E0_TARGETS)[name]
     weight = getattr(getattr(models, enum), member)
     t = weight.transforms()
     if t.crop_size != [224]:
@@ -60,7 +66,8 @@ def load_target(name, lock_file, cache, device):
     path = Path(cache) / entry['file_name']
     if Path(entry['file_name']).name != entry['file_name'] or sha256(path) != entry['weights_sha256']:
         raise ValueError('checkpoint digest mismatch')
-    model = getattr(models, name)(weights=None)
+    kwargs = dict(transform_input=True, init_weights=False) if name == 'googlenet' else {}
+    model = getattr(models, name)(weights=None, **kwargs)
     state = torch.load(path, map_location='cpu', weights_only=True)
     # Historical DenseNet checkpoint keys require torchvision's official adapter.
     if name == 'densenet121':

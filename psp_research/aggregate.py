@@ -54,8 +54,11 @@ def validate_metric(r):
 
 
 def comparison_identity(r):
-    return {k:r[k] for k in ['protocol_id','target','weights_sha256','transform_sha256','manifest_sha256',
+    result = {k:r[k] for k in ['protocol_id','target','weights_sha256','transform_sha256','manifest_sha256',
         'precision','environment','training_weights_sha256','training_implementation_sha256','evaluation_implementation_sha256']}
+    result.update(training_environment=r.get('training_environment'),
+                  training_numerical_policy=r.get('training_numerical_policy'))
+    return result
 
 
 def paired_delta(base, intervention, contrast):
