@@ -40,7 +40,7 @@ def execute(a):
     try:
         check_upstream()
         if not a.manifest_dir:
-            raise ValueError('BLOCKED: supply devkit-verified --manifest-dir; no real training without validated data pipeline')
+            raise ValueError('BLOCKED: supply provenance-verified --manifest-dir; no real training without validated data pipeline')
         index = verify_bundle(a.manifest_dir)
         if index.get('dataset') != 'ILSVRC2012_validation' or index.get('counts') != {'selection': 1000, 'holdout': 49000, 'smoke_holdout': 1000}:
             raise ValueError('expected full ImageNet validation manifest bundle')
