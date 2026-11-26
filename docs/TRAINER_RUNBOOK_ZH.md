@@ -27,9 +27,10 @@ C 的 weighted activation branch 與 A/B 的 unweighted branch 有原碼差異�
 - paired transform 直接呼叫原 helper，但以 stack 建立輸出，避免新版 autograd 的 in-place version 問題。
 - 原 jigsaw always-true boolean branch 保留，A/B/C 一致，不偷偷修正。
 - 原 synthetic-prior preprocessing／loss 輸入照原 helper，不擅自增加 normalization 或 image clipping。目標評估才使用 raw RGB add→clip→normalization。
+- 原碼第一次weighted teacher forward發生在model.eval()之前；default train mode會更新BatchNorm running buffers一次。E0保留此行為；研究版自第一個forward起eval/frozen，因此不發生這次狀態漂移。目標／來源參數都不重訓；這仍是必須明列的original-vs-research差異。
 - 模型 `eval + requires_grad_(False)`，optimizer 僅有 delta；CPU fixture 驗證模型 tensor hash 不變。
 - loss／sample／gradient／optimizer state／delta NaN/Inf 會失敗並留下 failed 狀態，不修改 frozen loss 加 epsilon 修補。
-- 預設 `--determinism strict`。RTX4090／torch2.5.1 實測原 paired rotation 的 `grid_sampler_2d_backward_cuda` 在此模式第一步失敗。工程 smoke 可明確加 `--determinism warn`，保留原 transform 並接受 PyTorch 的 CUDA 非確定性警告；此模式目前限 `--smoke-steps`。數值模式寫入 provenance/checkpoint，resume 拒絕模式不同的 checkpoint，不宣稱 GPU bitwise replay。
+- 預設 `--determinism strict`。RTX4090／torch2.5.1 實測原 paired rotation 的 `grid_sampler_2d_backward_cuda` 在此模式第一步失敗。工程 smoke 可明確加 `--determinism warn`，保留原 transform 並接受 PyTorch 的 CUDA 非確定性警告；完整research目前亦可明確指定warn模式，但必須通過新增E0 baseline gate（`--baseline-record`）；完整執行命令見FULL_EXECUTION。數值模式寫入 provenance/checkpoint，resume 拒絕模式不同的 checkpoint，不宣稱 GPU bitwise replay。
 
 ## 命令
 

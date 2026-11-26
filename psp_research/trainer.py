@@ -41,7 +41,9 @@ def model_hash(model):
 
 
 def numerical_policy():
-    return dict(deterministic_algorithms=torch.are_deterministic_algorithms_enabled(),
+    return dict(torch_version=str(torch.__version__), cuda_runtime=torch.version.cuda,
+        cudnn_version=torch.backends.cudnn.version(),
+        deterministic_algorithms=torch.are_deterministic_algorithms_enabled(),
         deterministic_warn_only=torch.is_deterministic_algorithms_warn_only_enabled(),
         cudnn_benchmark=torch.backends.cudnn.benchmark,
         cudnn_deterministic=torch.backends.cudnn.deterministic,

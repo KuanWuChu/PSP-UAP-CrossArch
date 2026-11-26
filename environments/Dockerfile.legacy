@@ -1,0 +1,7 @@
+# Mount the separately prepared Python3.8/torch1.11/cu113 environment at /opt/psp-legacy.
+# The base digest is pinned; datasets and checkpoints are mounted read-only at runtime.
+FROM ubuntu:20.04@sha256:8feb4d8ca5354def3d8fce243717141ce31e2c428701f6682bd2fafe15388214
+RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends libgl1 libglib2.0-0 libgomp1 ca-certificates && rm -rf /var/lib/apt/lists/*
+ENV OMP_NUM_THREADS=4 MKL_NUM_THREADS=4 PYTHONUNBUFFERED=1
+WORKDIR /work
+ENTRYPOINT ["/opt/psp-legacy/bin/python"]

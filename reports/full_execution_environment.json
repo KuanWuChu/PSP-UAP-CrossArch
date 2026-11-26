@@ -1,0 +1,19 @@
+{
+  "cpu_tests": "70 passed in6.78s",
+  "cuda": "11.3",
+  "cuda_conv_backward_probe": "PASS",
+  "cudnn": 8200,
+  "execution_label": "legacy_declared_core_environment",
+  "full_training_status": "E0 original modern run in progress; legacy full baseline and matrix not yet launched",
+  "gpu": "NVIDIA GeForce RTX 4090",
+  "legacy_packages_lock_sha256": "35fd7381b54a066d0f6b458baf1cea01dda3ca95bc5bff88a169a1e231e98693",
+  "numpy": "1.23.5",
+  "opencv": "4.7.0",
+  "os": "NAME=\"Ubuntu\"\nVERSION=\"20.04.6 LTS (Focal Fossa)\"\nID=ubuntu\nID_LIKE=debian\nPRETTY_NAME=\"Ubuntu 20.04.6 LTS\"\nVERSION_ID=\"20.04\"\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nVERSION_CODENAME=focal\nUBUNTU_CODENAME=focal\n",
+  "python": "3.8.20 (default, Oct  3 2024, 15:24:27) \n[GCC 11.2.0]",
+  "runtime_image_digest": "sha256:cd1baba39d9b2c867ee4c32563a2b6764a2a4e0531bb4ccdded4f1bf8a4362b2",
+  "skimage": "0.19.3",
+  "torch": "1.11.0+cu113",
+  "torchvision": "0.12.0+cu113",
+  "ubuntu_base_digest": "sha256:8feb4d8ca5354def3d8fce243717141ce31e2c428701f6682bd2fafe15388214"
+}
