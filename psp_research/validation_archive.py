@@ -130,6 +130,9 @@ def extract_validation(index_file, chunks_file, parts_dir, labels_dir, data_root
             writer.writeheader()
             for count, entry in enumerate(entries,1):
                 number, data = read_validation_entry(reader, entry, index['range_begin'])
+                expected_next = entries[count]['offset'] if count < len(entries) else index['range_end_exclusive']
+                if reader.pos + index['range_begin'] != expected_next:
+                    raise ValueError('selected span contains a gap or non-validation bytes')
                 wnid = truth[number-1]
                 relative = f'{wnid}/ILSVRC2012_val_{number:08d}.JPEG'
                 target = data_root / relative

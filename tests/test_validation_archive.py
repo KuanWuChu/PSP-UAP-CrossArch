@@ -24,6 +24,7 @@ def test_cross_segment_header_payload_and_crc(tmp_path,zip64):
     entry,expected,reader=make_entry(tmp_path,zip64)
     try:
         assert read_validation_entry(reader,entry,100)==(1,expected)
+        assert reader.pos==reader.size
         reader.seek(reader.size);assert reader.read(10)==b''
         with pytest.raises(ValueError):reader.seek(-1)
         with pytest.raises(ValueError):reader.seek(reader.size+1)

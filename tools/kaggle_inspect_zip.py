@@ -63,6 +63,9 @@ if __name__=='__main__':
         next_index=bisect.bisect_right(offsets,selected[-1].header_offset)
         end=offsets[next_index] if next_index<len(offsets) else z.start_dir
         compressed=sum(x.compress_size for x in selected)
+        inside=[x.filename for x in ordered if begin <= x.header_offset < end]
+        if len(inside)!=50000 or set(inside)!={x.filename for x in selected}:
+            raise ValueError('validation entries are not an exclusive contiguous span')
         record=dict(competition='imagenet-object-localization-challenge',zip_total_bytes=length,zip_etag=etag,
             total_entries=len(entries),validation_count=len(selected),validation_uncompressed_bytes=sum(x.file_size for x in selected),
             validation_compressed_bytes=compressed,range_begin=begin,range_end_exclusive=end,
