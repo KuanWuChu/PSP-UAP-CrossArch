@@ -1,0 +1,163 @@
+{
+  "acquisition": {
+    "acquisition_type": "public_third_party_mirror_of_original_archive",
+    "bytes": 2568145,
+    "commit": "2e9df66a95fe0ce3a7ad1f957a7d1031e9119568",
+    "copyright_holder": "The ImageNet Project",
+    "license_member": "ILSVRC2012_devkit_t12/COPYING",
+    "license_sha256": "5f4d5e6ba018a1c22c12bcb5d7d9c42c5ffe9672ab0165491203a4111a0b4463",
+    "login_required": false,
+    "md5": "fa75699e90414af021442c21a62c3abf",
+    "notice_preserved": true,
+    "official_md5_reference": "https://docs.pytorch.org/vision/0.20/_modules/torchvision/datasets/imagenet.html",
+    "repository": "https://github.com/0429charlie/ImageNet_metadata",
+    "sha256": "b59243268c0d266621fd587d2018f69e906fb22875aca0e295b48cafaa927953",
+    "terms_acceptance_required": false,
+    "url": "https://raw.githubusercontent.com/0429charlie/ImageNet_metadata/2e9df66a95fe0ce3a7ad1f957a7d1031e9119568/ILSVRC2012_devkit_t12.tar.gz"
+  },
+  "additional_checks": [
+    "CLI help PASS",
+    "compileall PASS",
+    "Official mapping parser independently verifies published MD5",
+    "All50000 manifest labels/indices/unique original image numbers verified",
+    "Three regenerated manifest CSVs are byte-identical to prior versions; source metadata is recorded in a separate new index"
+  ],
+  "archive_path": "data/imagenet2012/ILSVRC2012_devkit_t12.tar.gz",
+  "branch": "feat/devkit-mapping-verification",
+  "cpu_tests": "67 passed in6.30s",
+  "date": "2026-11-26",
+  "existing_manifest_path": "manifests/imagenet_val_kaggle_tfds_v1",
+  "existing_mapping_crosscheck": {
+    "checksum_reference": "https://docs.pytorch.org/vision/0.20/_modules/torchvision/datasets/imagenet.html",
+    "class_order": "sorted_WNID_torchvision_ImageFolder",
+    "classes": 1000,
+    "devkit_bytes": 2568145,
+    "devkit_md5": "fa75699e90414af021442c21a62c3abf",
+    "devkit_sha256": "b59243268c0d266621fd587d2018f69e906fb22875aca0e295b48cafaa927953",
+    "independent_parser": "torchvision.datasets.imagenet.parse_devkit_archive",
+    "loss_sha256": "6855a7310c30fbd5bddfefbdb9ca84c2c5732a9aaaecfc316657b4fb8f108982",
+    "manifest_counts": {
+      "holdout": 49000,
+      "selection": 1000,
+      "smoke_holdout": 1000
+    },
+    "manifest_hashes": {
+      "holdout": "a96015afdaeae9040d1be127d715d1a742a39712da308fe8a11bba4fafaa4233",
+      "selection": "9d85658f9542ae90708b3a35373662d50e7740e9d59aa03304a7e6da35854362",
+      "smoke_holdout": "51802ec2f25e8d0a6715818409e74b0f66e76bb158baccec7a36dd5287cc277e"
+    },
+    "matched_manifest_images": 50000,
+    "matched_validation_labels": 50000,
+    "official_devkit_verified": true,
+    "reference_label_source": {
+      "class_index_sha256": "307f29eccc13428af8a29564d3cb7838039860d8fd19e57c0ee42dcb917a75ec",
+      "class_order": "sorted_WNID_torchvision_ImageFolder",
+      "devkit_sha256": null,
+      "ground_truth_sha256": "313fc3f23c864dde9183c9a368809065765dd1b657a6904fded44e3e46d34604",
+      "independent_reference": {
+        "commit": "252301af4a62f264bddf16491fd0bfe57db8140f",
+        "labels_sha256": "70002b0ff5de60a3a17a82dbfcff291931f96225ddf941ad2e182fc39e183d15",
+        "labels_url": "https://raw.githubusercontent.com/tensorflow/datasets/252301af4a62f264bddf16491fd0bfe57db8140f/tensorflow_datasets/datasets/imagenet2012/labels.txt",
+        "repository": "tensorflow/datasets",
+        "validation_labels_sha256": "313fc3f23c864dde9183c9a368809065765dd1b657a6904fded44e3e46d34604",
+        "validation_labels_url": "https://raw.githubusercontent.com/tensorflow/datasets/252301af4a62f264bddf16491fd0bfe57db8140f/tensorflow_datasets/datasets/imagenet2012/validation_labels.txt"
+      },
+      "kaggle": {
+        "competition_url": "https://www.kaggle.com/competitions/imagenet-object-localization-challenge",
+        "file_name": "LOC_val_solution.csv",
+        "file_sha256": "09811d286325caee803bdeb74d536ece564aa6faf1ebe1e839c70981f3ce9788"
+      },
+      "label_source": "official_kaggle_crosschecked_tfds",
+      "matched_validation_labels": 50000,
+      "official_devkit_verified": false
+    },
+    "research_commit": "da8ffdddd16fcfc816599861d733e06994312404",
+    "selection_holdout_disjoint": true,
+    "smoke_is_holdout_subset": true,
+    "status": "PASS",
+    "torchvision_version": "0.20.1+cu121",
+    "upstream_commit": "dbbc4ee8ee66b6cd5286b939d7254fd7edcbfb8c",
+    "working_tree_dirty": false
+  },
+  "license_notice_path": "docs/licenses/ILSVRC2012_DEVKIT_COPYING.txt",
+  "license_scope": "Original devkit software and associated documentation; no claim that this license covers ImageNet image redistribution.",
+  "manifest_csvs_byte_identical": true,
+  "not_run": [
+    "No training or evaluation launched in this devkit follow-up",
+    "Full training, faithful E0 and formal E1/E2/E3 NOT_RUN",
+    "Faithful legacy environment and baseline remain unvalidated",
+    "Original validation-tar MD5 remains unverified; validation came from authenticated Kaggle ZIP"
+  ],
+  "official_bundle_crosscheck": {
+    "checksum_reference": "https://docs.pytorch.org/vision/0.20/_modules/torchvision/datasets/imagenet.html",
+    "class_order": "sorted_WNID_torchvision_ImageFolder",
+    "classes": 1000,
+    "devkit_bytes": 2568145,
+    "devkit_md5": "fa75699e90414af021442c21a62c3abf",
+    "devkit_sha256": "b59243268c0d266621fd587d2018f69e906fb22875aca0e295b48cafaa927953",
+    "independent_parser": "torchvision.datasets.imagenet.parse_devkit_archive",
+    "loss_sha256": "6855a7310c30fbd5bddfefbdb9ca84c2c5732a9aaaecfc316657b4fb8f108982",
+    "manifest_counts": {
+      "holdout": 49000,
+      "selection": 1000,
+      "smoke_holdout": 1000
+    },
+    "manifest_hashes": {
+      "holdout": "a96015afdaeae9040d1be127d715d1a742a39712da308fe8a11bba4fafaa4233",
+      "selection": "9d85658f9542ae90708b3a35373662d50e7740e9d59aa03304a7e6da35854362",
+      "smoke_holdout": "51802ec2f25e8d0a6715818409e74b0f66e76bb158baccec7a36dd5287cc277e"
+    },
+    "matched_manifest_images": 50000,
+    "matched_validation_labels": 50000,
+    "official_devkit_verified": true,
+    "reference_label_source": {
+      "acquisition": {
+        "acquisition_type": "public_third_party_mirror_of_original_archive",
+        "bytes": 2568145,
+        "commit": "2e9df66a95fe0ce3a7ad1f957a7d1031e9119568",
+        "copyright_holder": "The ImageNet Project",
+        "license_member": "ILSVRC2012_devkit_t12/COPYING",
+        "license_sha256": "5f4d5e6ba018a1c22c12bcb5d7d9c42c5ffe9672ab0165491203a4111a0b4463",
+        "login_required": false,
+        "md5": "fa75699e90414af021442c21a62c3abf",
+        "notice_preserved": true,
+        "official_md5_reference": "https://docs.pytorch.org/vision/0.20/_modules/torchvision/datasets/imagenet.html",
+        "repository": "https://github.com/0429charlie/ImageNet_metadata",
+        "sha256": "b59243268c0d266621fd587d2018f69e906fb22875aca0e295b48cafaa927953",
+        "terms_acceptance_required": false,
+        "url": "https://raw.githubusercontent.com/0429charlie/ImageNet_metadata/2e9df66a95fe0ce3a7ad1f957a7d1031e9119568/ILSVRC2012_devkit_t12.tar.gz"
+      },
+      "class_index_sha256": "307f29eccc13428af8a29564d3cb7838039860d8fd19e57c0ee42dcb917a75ec",
+      "devkit_md5": "fa75699e90414af021442c21a62c3abf",
+      "devkit_sha256": "b59243268c0d266621fd587d2018f69e906fb22875aca0e295b48cafaa927953",
+      "ground_truth_sha256": "313fc3f23c864dde9183c9a368809065765dd1b657a6904fded44e3e46d34604",
+      "label_source": "official_devkit",
+      "official_devkit_verified": true
+    },
+    "research_commit": "da8ffdddd16fcfc816599861d733e06994312404",
+    "selection_holdout_disjoint": true,
+    "smoke_is_holdout_subset": true,
+    "status": "PASS",
+    "torchvision_version": "0.20.1+cu121",
+    "upstream_commit": "dbbc4ee8ee66b6cd5286b939d7254fd7edcbfb8c",
+    "working_tree_dirty": false
+  },
+  "official_labels_path": "labels/imagenet2012_official_devkit_v1",
+  "official_manifest_index_sha256": "5423355425d7caacadc68da88dcc3c136cc7ab8a07e1d031bbee03a20351b93f",
+  "official_manifest_path": "manifests/imagenet_val_devkit_v1",
+  "original_manifest_index_sha256": "57a2cc2d9389bde911dec851eab35adc70e5ec1b4bf3a52710e80260eb385c9d",
+  "prior_gpu_smoke_report": {
+    "gpu_smoke_rerun": false,
+    "historical_provenance_unchanged": true,
+    "path": "reports/kaggle_gpu_smoke_validation.json",
+    "sha256": "a41b9f6eecccb0d3f3e417cc011fbb16e4569bb145f6f10a588bc01d21fb6153"
+  },
+  "status": "ORIGINAL_DEVKIT_MD5_AND_MAPPING_VERIFIED",
+  "upstream_integrity": "8 protected files PASS",
+  "verification_commands": [
+    "OMP_NUM_THREADS=1 .venv/bin/python -m pytest -q",
+    "python3 scripts/check_upstream_integrity.py",
+    ".venv/bin/python tools/check_devkit_mapping.py --devkit data/imagenet2012/ILSVRC2012_devkit_t12.tar.gz --labels-dir labels/imagenet2012_kaggle_tfds_v1 --manifest-dir manifests/imagenet_val_kaggle_tfds_v1 --output outputs/devkit-acquisition-20261126/crosscheck-existing.json",
+    ".venv/bin/python tools/check_devkit_mapping.py --devkit data/imagenet2012/ILSVRC2012_devkit_t12.tar.gz --labels-dir labels/imagenet2012_official_devkit_v1 --manifest-dir manifests/imagenet_val_devkit_v1 --output outputs/devkit-acquisition-20261126/crosscheck-official.json"
+  ]
+}

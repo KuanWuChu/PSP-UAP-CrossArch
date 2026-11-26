@@ -11,8 +11,9 @@
 | Modern CUDA probe | PASS on RTX4090; torch2.5.1+cu121 / torchvision0.20.1+cu121 |
 | Faithful legacy environment | UNVALIDATED; modern route is separately labeled |
 | ImageNet validation / real manifests | VERIFIED: Kaggle50000; CRC32/JPEG/SHA256; selection1000 / disjoint holdout49000 / smoke1000 |
-| Label mapping | VERIFIED: all50000 Kaggle labels match pinned TFDS metadata; sorted1000 WNIDs |
-| Original official devkit | BLOCKED: official host timeout; absent from competition ZIP; original artifact/mapping unverified |
+| Label mapping | VERIFIED: all50000 Kaggle/TFDS labels and1000 sorted WNIDs also match original devkit through independent torchvision parser |
+| Official-source manifests | VERIFIED: separate devkit source index; all3 CSVs byte-identical to previous split |
+| Original official devkit | VERIFIED: public mirror copy matches official MD5; original COPYING retained; no login/terms needed |
 | Real-data evaluator smoke | PASS: zero/random CNN+ViT fixtures and one actual100-step UAP on ResNet50 / ConvNeXt Base / Swin T / ViT B16,1000 images each |
 | Controlled trainer / E2 A/B/C | IMPLEMENTED; CPU detach/replay/immutable checkpoint/resume/finite fixtures PASS |
 | GPU100-step trainer smoke | PASS in explicit warn-only mode: ResNet152 full PSP T/RW, seed126, finite100 steps; strict mode failed on CUDA grid-sampler determinism |
@@ -26,3 +27,5 @@ CPU fixture metrics are software checks, not ImageNet measurements. Missing resu
 Current evidence: [Kaggle/GPU smoke report](../reports/kaggle_gpu_smoke_validation.json) and [commands/integrity limits](KAGGLE_DATA_SMOKE_ZH.md). Earlier validation reports retain their historical blocker snapshots.
 
 GPU smoke is modern compatibility, not faithful E0. Warn-only CUDA grid-sampler backward can be nondeterministic; exact GPU replay is unverified. Original validation-tar MD5 is not verified because images came from the authenticated Kaggle ZIP. No final49000-image evaluation or full training was run.
+
+Devkit follow-up: [acquisition/license/crosscheck](DEVKIT_VERIFICATION_ZH.md), [machine-readable evidence](../reports/devkit_mapping_verification.json); CPU67 passed. Original devkit blocker is resolved. Prior smoke provenance is preserved; no training/evaluation was launched in this follow-up.
