@@ -2,14 +2,16 @@
 
 2026-11-25，115_1作業。這是以 CVPR 2025 PSP-UAP 官方程式為基礎的研究擴充計畫。
 
-**2026-11-26：公開 native fork 已建立並驗證。基礎工具與 E1 evaluator 已實作；CPU fixtures 通過。尚缺合法 ImageNet／devkit 路徑與真正 UAP；正式 E0–E3 尚未執行。**
+**2026-11-26：公開 native fork 已驗證。Kaggle validation 全部 50,000 張已下載並驗證，標籤與固定 TFDS 版本逐張核對，manifests 已建立。62 項 CPU 測試、100-step ResNet152 相容模式及 CNN／ConvNeXt／Swin／ViT GPU smoke 通過。原始官方 devkit 仍缺；完整訓練與正式 E0–E3 尚未執行。**
+
+本次實測與重跑命令：[Kaggle 資料與 GPU smoke](docs/KAGGLE_DATA_SMOKE_ZH.md)；完整 hash／原始計數摘要：[驗證報告](reports/kaggle_gpu_smoke_validation.json)。
 
 實際可執行入口：[工具操作文件](docs/TOOLS_RUNBOOK_ZH.md)、[受控 trainer／E2](docs/TRAINER_RUNBOOK_ZH.md)、[E3 與結果彙整](docs/EXPERIMENT_EXECUTION_ZH.md)。最新分項狀態：[STATUS](docs/STATUS.md)。
 
 - 官方： https://github.com/ChanhuiLee1111/PSP-UAP
 - 固定原始 commit：`dbbc4ee8ee66b6cd5286b939d7254fd7edcbfb8c`
 - 預定公開 fork：[KuanWuChu/PSP-UAP-CrossArch](https://github.com/KuanWuChu/PSP-UAP-CrossArch)
-- 本地 branch：`plan/crossarch-handoff-20261125`
+- 本次 feature branch：`feat/kaggle-data-smoke`（以 PR 交付，未自動 merge）
 - 原碼基準 tag：`research/upstream-20261125`
 - 授權：沿用官方 MIT License，保留作者著作權與論文引用。
 

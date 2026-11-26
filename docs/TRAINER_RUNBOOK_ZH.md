@@ -77,5 +77,5 @@ CPU fixture 已驗證 loss records、delta、Adam、RNG、curriculum 逐位元�
 
 ## 實際執行界線
 
-只有 CPU fixtures 及 dry-run；ResNet152 GPU smoke 與正式 E0/E1/E2 均未執行。缺合法 ImageNet／官方 devkit 路徑。
+62 項 CPU fixtures 通過；2026-11-26 已在 Kaggle validation／TFDS 交叉核對 manifests 上完成 ResNet152100-step GPU smoke，並用其 UAP 做四架構 target-only smoke。嚴格確定性模式第一步失敗；明確 `--determinism warn` 模式完成100步。原始官方 devkit 仍缺，正式 E0/E1/E2/E3 與完整訓練未執行。詳見 [實測紀錄](KAGGLE_DATA_SMOKE_ZH.md)。
 原始 Loss SHA256：`6855a7310c30fbd5bddfefbdb9ca84c2c5732a9aaaecfc316657b4fb8f108982`。
