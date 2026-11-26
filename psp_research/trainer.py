@@ -40,6 +40,15 @@ def model_hash(model):
     return h.hexdigest()
 
 
+def numerical_policy():
+    return dict(deterministic_algorithms=torch.are_deterministic_algorithms_enabled(),
+        deterministic_warn_only=torch.is_deterministic_algorithms_warn_only_enabled(),
+        cudnn_benchmark=torch.backends.cudnn.benchmark,
+        cudnn_deterministic=torch.backends.cudnn.deterministic,
+        matmul_tf32=torch.backends.cuda.matmul.allow_tf32,
+        cudnn_tf32=torch.backends.cudnn.allow_tf32)
+
+
 def build_sources(prior, delta, source_mode, num_copies, area, ratio):
     """Call inside crop RNG context. Sources detached; only outer delta has gradient."""
     if source_mode not in {'noise_crops', 'psp_crops'}:
@@ -79,6 +88,7 @@ class ControlledTrainer:
         self.seed, self.device = seed, torch.device(device)
         self.model = model.to(self.device).eval().requires_grad_(False)
         self.model_identity = model_hash(self.model)
+        self.numerical_policy = numerical_policy()
         self.implementation_sha256 = digest({p: sha256(ROOT / p) for p in ['psp_research/trainer.py', 'psp_research/rng.py', 'psp_research/config.py', 'loss.py', 'functions.py', 'semantic_aug.py', 'strategy.py']})
         self.rng = RNGStreams(seed, self.device.type == 'cuda')
         with self.rng.use('init'):
@@ -161,7 +171,8 @@ class ControlledTrainer:
             curriculum=copy.deepcopy(vars(self.args)), saturation=self.saturation,
             exogenous_draws_sha256=self.exogenous_draws_sha256, prior_draws_sha256=self.prior_draws_sha256,
             rng_streams=self.rng.state_dict(), global_rng=capture(self.rng.use_cuda),
-            loss_sha256=sha256(ROOT / 'loss.py'), execution_label='research_fixed_budget', device_type=self.device.type)
+            loss_sha256=sha256(ROOT / 'loss.py'), execution_label='research_fixed_budget', device_type=self.device.type,
+            numerical_policy=self.numerical_policy)
 
     def save(self, path):
         path = Path(path)
@@ -176,8 +187,8 @@ class ControlledTrainer:
         s = torch.load(path, map_location='cpu', weights_only=True)
         if (s['schema_version'] != 1 or s['upstream_commit'] != UPSTREAM or s['implementation_sha256'] != self.implementation_sha256 or s['config'] != self.config or s['seed'] != self.seed or
             s['loss_sha256'] != sha256(ROOT / 'loss.py') or s['model_sha256'] != self.model_identity or
-            s['device_type'] != self.device.type):
-            raise ValueError('resume config/seed/loss/model/device mismatch')
+            s['device_type'] != self.device.type or s.get('numerical_policy') != self.numerical_policy):
+            raise ValueError('resume config/seed/loss/model/device/numerical policy mismatch')
         if not 0 <= s['step'] <= self.config['max_steps'] or s['delta'].shape != self.delta.shape:
             raise ValueError('invalid checkpoint step/shape')
         finite(s['delta'], 'resumed delta')

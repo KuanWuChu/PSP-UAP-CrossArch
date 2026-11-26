@@ -1,0 +1,538 @@
+{
+  "blockers": [
+    "Original ILSVRC2012_devkit_t12.tar.gz absent: official ImageNet host times out and competition ZIP contains no devkit; official devkit mapping is not verified.",
+    "Original ILSVRC2012_img_val.tar was not downloaded; its published MD5 is not verified. Kaggle image bytes have ZIP CRC32/size, JPEG and SHA256 verification.",
+    "Legacy faithful environment and baseline are unvalidated. E0 and formal E1/E2/E3, 49000-image final evaluation and full training NOT_RUN.",
+    "GPU exact checkpoint/resume replay not tested; warn-only grid-sampler backward can be nondeterministic."
+  ],
+  "branch": "feat/kaggle-data-smoke",
+  "cpu_tests": {
+    "command": "OMP_NUM_THREADS=1 .venv/bin/python -m pytest -q",
+    "result": "62 passed"
+  },
+  "data": {
+    "archive_catalog_sha256": "eecbc73e3cfc2f8d403da65108133ecd67cf3ba5f184ccb5f7db4ce054bdf610",
+    "chunk_catalog_sha256": "b487b5f360551227a398b7df0f34c584f090c3853294b6146360c5096f0ff81d",
+    "classes": 1000,
+    "crc32_verified_images": 50000,
+    "image_bytes": 6706296736,
+    "image_inventory_sha256": "9d76a4f7ee0a3d3344cc1e7c9090063c8c40d44f8d4a463d090ec3fe72c41981",
+    "images": 50000,
+    "jpeg_verified_images": 50000,
+    "label_source": {
+      "class_index_sha256": "307f29eccc13428af8a29564d3cb7838039860d8fd19e57c0ee42dcb917a75ec",
+      "class_order": "sorted_WNID_torchvision_ImageFolder",
+      "devkit_sha256": null,
+      "ground_truth_sha256": "313fc3f23c864dde9183c9a368809065765dd1b657a6904fded44e3e46d34604",
+      "independent_reference": {
+        "commit": "252301af4a62f264bddf16491fd0bfe57db8140f",
+        "labels_sha256": "70002b0ff5de60a3a17a82dbfcff291931f96225ddf941ad2e182fc39e183d15",
+        "labels_url": "https://raw.githubusercontent.com/tensorflow/datasets/252301af4a62f264bddf16491fd0bfe57db8140f/tensorflow_datasets/datasets/imagenet2012/labels.txt",
+        "repository": "tensorflow/datasets",
+        "validation_labels_sha256": "313fc3f23c864dde9183c9a368809065765dd1b657a6904fded44e3e46d34604",
+        "validation_labels_url": "https://raw.githubusercontent.com/tensorflow/datasets/252301af4a62f264bddf16491fd0bfe57db8140f/tensorflow_datasets/datasets/imagenet2012/validation_labels.txt"
+      },
+      "kaggle": {
+        "competition_url": "https://www.kaggle.com/competitions/imagenet-object-localization-challenge",
+        "file_name": "LOC_val_solution.csv",
+        "file_sha256": "09811d286325caee803bdeb74d536ece564aa6faf1ebe1e839c70981f3ce9788"
+      },
+      "label_source": "official_kaggle_crosschecked_tfds",
+      "matched_validation_labels": 50000,
+      "official_devkit_verified": false
+    },
+    "original_validation_tar_md5_verified": false,
+    "source_zip_etag": "\"9afa8411cc40add07a063692a7c55d82\"",
+    "status": "complete"
+  },
+  "dataset_path": "data/imagenet2012/val",
+  "date": "2026-11-26",
+  "evaluations": {
+    "random": {
+      "resnet50": {
+        "adv_acc": 0.753,
+        "adv_correct_count": 753,
+        "cc_asr": 0.05505761843790013,
+        "clean_acc": 0.781,
+        "clean_correct_became_wrong_count": 43,
+        "clean_correct_count": 781,
+        "elapsed_seconds": 1.5182621469721198,
+        "flip_count": 96,
+        "fr": 0.096,
+        "manifest_sha256": "51802ec2f25e8d0a6715818409e74b0f66e76bb158baccec7a36dd5287cc277e",
+        "metrics_path": "outputs/gpu-smoke-20261126/random-evaluation/resnet50/metrics.json",
+        "metrics_sha256": "b4f7f26f15b70a38fb142bce502a4e514b17bc5b695285ea40765258a45ddd43",
+        "predictions_path": "outputs/gpu-smoke-20261126/random-evaluation/resnet50/predictions.csv",
+        "predictions_sha256": "df1dd54054f017b1e7db39d001689ea03c1b92a1d0bf09b86fe4d2290418b94f",
+        "protocol_id": "e1-aaff350e1e805430",
+        "research_commit": "41d2443a8e877b6afae2994bd66d7016120458ad",
+        "run_id": "eval-0c61850558fe",
+        "status": "complete",
+        "target": "resnet50",
+        "target_family": "CNN",
+        "total_count": 1000,
+        "training_numerical_policy": null,
+        "training_run_id": null,
+        "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+        "uap_sha256": "77aa56b4402e731958c65db7cf6d5b58d71c777d1e9e501aa6b0f3e790c758b1",
+        "weights_id": "ResNet50_Weights.IMAGENET1K_V1",
+        "weights_sha256": "0676ba61b6795bbe1773cffd859882e5e297624d384b6993f7c9e683e722fb8a",
+        "working_tree_dirty": false
+      },
+      "vit_b_16": {
+        "adv_acc": 0.817,
+        "adv_correct_count": 817,
+        "cc_asr": 0.02181818181818182,
+        "clean_acc": 0.825,
+        "clean_correct_became_wrong_count": 18,
+        "clean_correct_count": 825,
+        "elapsed_seconds": 2.4577530950773507,
+        "flip_count": 56,
+        "fr": 0.056,
+        "manifest_sha256": "51802ec2f25e8d0a6715818409e74b0f66e76bb158baccec7a36dd5287cc277e",
+        "metrics_path": "outputs/gpu-smoke-20261126/random-evaluation/vit_b_16/metrics.json",
+        "metrics_sha256": "f311c5558bb675e9bbb54b2242116efff03e9279837eca1a5dddcb1645b55218",
+        "predictions_path": "outputs/gpu-smoke-20261126/random-evaluation/vit_b_16/predictions.csv",
+        "predictions_sha256": "893525652ffd0007c25ede04fa77eb37eb508222c15aa48b1cbbfd4e010aa71b",
+        "protocol_id": "e1-aaff350e1e805430",
+        "research_commit": "41d2443a8e877b6afae2994bd66d7016120458ad",
+        "run_id": "eval-0c61850558fe",
+        "status": "complete",
+        "target": "vit_b_16",
+        "target_family": "ViT",
+        "total_count": 1000,
+        "training_numerical_policy": null,
+        "training_run_id": null,
+        "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+        "uap_sha256": "77aa56b4402e731958c65db7cf6d5b58d71c777d1e9e501aa6b0f3e790c758b1",
+        "weights_id": "ViT_B_16_Weights.IMAGENET1K_V1",
+        "weights_sha256": "c867db91d3e12c6cbadabb610d73c24a546bf82d8c03a9fea34f43a712ddb0e9",
+        "working_tree_dirty": false
+      }
+    },
+    "trained": {
+      "convnext_base": {
+        "adv_acc": 0.66,
+        "adv_correct_count": 660,
+        "cc_asr": 0.2413793103448276,
+        "clean_acc": 0.841,
+        "clean_correct_became_wrong_count": 203,
+        "clean_correct_count": 841,
+        "elapsed_seconds": 2.719411256024614,
+        "flip_count": 291,
+        "fr": 0.291,
+        "manifest_sha256": "51802ec2f25e8d0a6715818409e74b0f66e76bb158baccec7a36dd5287cc277e",
+        "metrics_path": "outputs/gpu-smoke-20261126/trained-evaluation/convnext_base/metrics.json",
+        "metrics_sha256": "8f752493931a0db0cc536d2b43fc09c3f41cdc332e5903c7417cbc8c073893bd",
+        "predictions_path": "outputs/gpu-smoke-20261126/trained-evaluation/convnext_base/predictions.csv",
+        "predictions_sha256": "f149ed02c4328613761ce2efcc13f9e011825d83ea51c5e20374adfbce4df4ee",
+        "protocol_id": "e1-aaff350e1e805430",
+        "research_commit": "5697120fc6e11192b1ea39447f163751e4105fa3",
+        "run_id": "eval-419465c44b1f",
+        "status": "complete",
+        "target": "convnext_base",
+        "target_family": "ConvNeXt",
+        "total_count": 1000,
+        "training_numerical_policy": {
+          "cudnn_benchmark": false,
+          "cudnn_deterministic": true,
+          "cudnn_tf32": false,
+          "deterministic_algorithms": true,
+          "deterministic_warn_only": true,
+          "matmul_tf32": false
+        },
+        "training_run_id": "train-2e1aca73b667",
+        "transform_sha256": "bae66aeac604a76a964ad05143b935ade9b74790816affc5d9ebafb99e0435de",
+        "uap_sha256": "eff09a14d4751dfe3840f214327e02dd8d410e6322e41d56b5ff014f8112166c",
+        "weights_id": "ConvNeXt_Base_Weights.IMAGENET1K_V1",
+        "weights_sha256": "6075fbad31c688f9ed013922a59daf0fc2f4dc12e6e43bc01fa840c7bd1ca2cd",
+        "working_tree_dirty": false
+      },
+      "resnet50": {
+        "adv_acc": 0.372,
+        "adv_correct_count": 372,
+        "cc_asr": 0.5454545454545454,
+        "clean_acc": 0.781,
+        "clean_correct_became_wrong_count": 426,
+        "clean_correct_count": 781,
+        "elapsed_seconds": 1.5319818179123104,
+        "flip_count": 587,
+        "fr": 0.587,
+        "manifest_sha256": "51802ec2f25e8d0a6715818409e74b0f66e76bb158baccec7a36dd5287cc277e",
+        "metrics_path": "outputs/gpu-smoke-20261126/trained-evaluation/resnet50/metrics.json",
+        "metrics_sha256": "db23896f3dc2cc0e9567cbdfafa0cc20cc1563ae2201759ef2be49387383ce13",
+        "predictions_path": "outputs/gpu-smoke-20261126/trained-evaluation/resnet50/predictions.csv",
+        "predictions_sha256": "86cf2111978f98fcb8dcd2599e1d5b99e1787719067d5633b3c1ada8bcebb63d",
+        "protocol_id": "e1-aaff350e1e805430",
+        "research_commit": "5697120fc6e11192b1ea39447f163751e4105fa3",
+        "run_id": "eval-419465c44b1f",
+        "status": "complete",
+        "target": "resnet50",
+        "target_family": "CNN",
+        "total_count": 1000,
+        "training_numerical_policy": {
+          "cudnn_benchmark": false,
+          "cudnn_deterministic": true,
+          "cudnn_tf32": false,
+          "deterministic_algorithms": true,
+          "deterministic_warn_only": true,
+          "matmul_tf32": false
+        },
+        "training_run_id": "train-2e1aca73b667",
+        "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+        "uap_sha256": "eff09a14d4751dfe3840f214327e02dd8d410e6322e41d56b5ff014f8112166c",
+        "weights_id": "ResNet50_Weights.IMAGENET1K_V1",
+        "weights_sha256": "0676ba61b6795bbe1773cffd859882e5e297624d384b6993f7c9e683e722fb8a",
+        "working_tree_dirty": false
+      },
+      "swin_t": {
+        "adv_acc": 0.739,
+        "adv_correct_count": 739,
+        "cc_asr": 0.13064713064713065,
+        "clean_acc": 0.819,
+        "clean_correct_became_wrong_count": 107,
+        "clean_correct_count": 819,
+        "elapsed_seconds": 1.7483175781089813,
+        "flip_count": 190,
+        "fr": 0.19,
+        "manifest_sha256": "51802ec2f25e8d0a6715818409e74b0f66e76bb158baccec7a36dd5287cc277e",
+        "metrics_path": "outputs/gpu-smoke-20261126/trained-evaluation/swin_t/metrics.json",
+        "metrics_sha256": "1827ae1e89c9c376ee341a1ab40050581cff64b14d97570858aec23dfee75f1f",
+        "predictions_path": "outputs/gpu-smoke-20261126/trained-evaluation/swin_t/predictions.csv",
+        "predictions_sha256": "c73e85e101023fb715d687fe4f4f053bde94f832f61d76cdf2d1421d7111c292",
+        "protocol_id": "e1-aaff350e1e805430",
+        "research_commit": "5697120fc6e11192b1ea39447f163751e4105fa3",
+        "run_id": "eval-419465c44b1f",
+        "status": "complete",
+        "target": "swin_t",
+        "target_family": "Swin",
+        "total_count": 1000,
+        "training_numerical_policy": {
+          "cudnn_benchmark": false,
+          "cudnn_deterministic": true,
+          "cudnn_tf32": false,
+          "deterministic_algorithms": true,
+          "deterministic_warn_only": true,
+          "matmul_tf32": false
+        },
+        "training_run_id": "train-2e1aca73b667",
+        "transform_sha256": "e63e24a0385b7546443cf5af69c0eec76ee664eb9f4296d5483737fcf6960999",
+        "uap_sha256": "eff09a14d4751dfe3840f214327e02dd8d410e6322e41d56b5ff014f8112166c",
+        "weights_id": "Swin_T_Weights.IMAGENET1K_V1",
+        "weights_sha256": "704ceda373461b0a224fcdddd75cd2a5e9f8064512ed47adbddef7f343fd147b",
+        "working_tree_dirty": false
+      },
+      "vit_b_16": {
+        "adv_acc": 0.764,
+        "adv_correct_count": 764,
+        "cc_asr": 0.09696969696969697,
+        "clean_acc": 0.825,
+        "clean_correct_became_wrong_count": 80,
+        "clean_correct_count": 825,
+        "elapsed_seconds": 2.458998066140339,
+        "flip_count": 142,
+        "fr": 0.142,
+        "manifest_sha256": "51802ec2f25e8d0a6715818409e74b0f66e76bb158baccec7a36dd5287cc277e",
+        "metrics_path": "outputs/gpu-smoke-20261126/trained-evaluation/vit_b_16/metrics.json",
+        "metrics_sha256": "1e5e92e96175805d28532307555d4ee87f7ca9df784639ad703a6dac74b8ff1a",
+        "predictions_path": "outputs/gpu-smoke-20261126/trained-evaluation/vit_b_16/predictions.csv",
+        "predictions_sha256": "f29306585049cdebefe40a12371393edffb2ce6e144c14320166c141ccf08fd9",
+        "protocol_id": "e1-aaff350e1e805430",
+        "research_commit": "5697120fc6e11192b1ea39447f163751e4105fa3",
+        "run_id": "eval-419465c44b1f",
+        "status": "complete",
+        "target": "vit_b_16",
+        "target_family": "ViT",
+        "total_count": 1000,
+        "training_numerical_policy": {
+          "cudnn_benchmark": false,
+          "cudnn_deterministic": true,
+          "cudnn_tf32": false,
+          "deterministic_algorithms": true,
+          "deterministic_warn_only": true,
+          "matmul_tf32": false
+        },
+        "training_run_id": "train-2e1aca73b667",
+        "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+        "uap_sha256": "eff09a14d4751dfe3840f214327e02dd8d410e6322e41d56b5ff014f8112166c",
+        "weights_id": "ViT_B_16_Weights.IMAGENET1K_V1",
+        "weights_sha256": "c867db91d3e12c6cbadabb610d73c24a546bf82d8c03a9fea34f43a712ddb0e9",
+        "working_tree_dirty": false
+      }
+    },
+    "zero": {
+      "resnet50": {
+        "adv_acc": 0.781,
+        "adv_correct_count": 781,
+        "cc_asr": 0.0,
+        "clean_acc": 0.781,
+        "clean_correct_became_wrong_count": 0,
+        "clean_correct_count": 781,
+        "elapsed_seconds": 44.68682882701978,
+        "flip_count": 0,
+        "fr": 0.0,
+        "manifest_sha256": "51802ec2f25e8d0a6715818409e74b0f66e76bb158baccec7a36dd5287cc277e",
+        "metrics_path": "outputs/gpu-smoke-20261126/zero-evaluation/resnet50/metrics.json",
+        "metrics_sha256": "156cd38460a4c08ffdb31645c810fee1511469a11aaece3565400ed38f456bb8",
+        "predictions_path": "outputs/gpu-smoke-20261126/zero-evaluation/resnet50/predictions.csv",
+        "predictions_sha256": "69a73ffe2ab85f6e9f11edcb5fe2a7cdea8affc2b2fa4c157139d27c94253957",
+        "protocol_id": "e1-aaff350e1e805430",
+        "research_commit": "41d2443a8e877b6afae2994bd66d7016120458ad",
+        "run_id": "eval-f0f0829b4356",
+        "status": "complete",
+        "target": "resnet50",
+        "target_family": "CNN",
+        "total_count": 1000,
+        "training_numerical_policy": null,
+        "training_run_id": null,
+        "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+        "uap_sha256": "2449003209f501e928cd67ed0335614accf844bdf3432a3e6146b1f836249dc9",
+        "weights_id": "ResNet50_Weights.IMAGENET1K_V1",
+        "weights_sha256": "0676ba61b6795bbe1773cffd859882e5e297624d384b6993f7c9e683e722fb8a",
+        "working_tree_dirty": false
+      },
+      "vit_b_16": {
+        "adv_acc": 0.825,
+        "adv_correct_count": 825,
+        "cc_asr": 0.0,
+        "clean_acc": 0.825,
+        "clean_correct_became_wrong_count": 0,
+        "clean_correct_count": 825,
+        "elapsed_seconds": 5.53063494595699,
+        "flip_count": 0,
+        "fr": 0.0,
+        "manifest_sha256": "51802ec2f25e8d0a6715818409e74b0f66e76bb158baccec7a36dd5287cc277e",
+        "metrics_path": "outputs/gpu-smoke-20261126/zero-evaluation/vit_b_16/metrics.json",
+        "metrics_sha256": "afa85787b1e331badd30819f7bcafa9046276453ed4d838a2080bd97d07f4fb9",
+        "predictions_path": "outputs/gpu-smoke-20261126/zero-evaluation/vit_b_16/predictions.csv",
+        "predictions_sha256": "ec3908cfc097d9c44ca3fa4f5dcff96a540adb4a7086a02c9aab49fc60193437",
+        "protocol_id": "e1-aaff350e1e805430",
+        "research_commit": "41d2443a8e877b6afae2994bd66d7016120458ad",
+        "run_id": "eval-f0f0829b4356",
+        "status": "complete",
+        "target": "vit_b_16",
+        "target_family": "ViT",
+        "total_count": 1000,
+        "training_numerical_policy": null,
+        "training_run_id": null,
+        "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+        "uap_sha256": "2449003209f501e928cd67ed0335614accf844bdf3432a3e6146b1f836249dc9",
+        "weights_id": "ViT_B_16_Weights.IMAGENET1K_V1",
+        "weights_sha256": "c867db91d3e12c6cbadabb610d73c24a546bf82d8c03a9fea34f43a712ddb0e9",
+        "working_tree_dirty": false
+      }
+    }
+  },
+  "fixtures": {
+    "epsilon": 0.0392156862745098,
+    "fixtures": {
+      "random": {
+        "linf": 0.039215024560689926,
+        "path": "outputs/gpu-smoke-20261126/fixtures/random.npy",
+        "purpose": "engineering fixture; not a trained UAP",
+        "sha256": "77aa56b4402e731958c65db7cf6d5b58d71c777d1e9e501aa6b0f3e790c758b1"
+      },
+      "zero": {
+        "linf": 0.0,
+        "path": "outputs/gpu-smoke-20261126/fixtures/zero.npy",
+        "purpose": "engineering fixture; not a trained UAP",
+        "sha256": "2449003209f501e928cd67ed0335614accf844bdf3432a3e6146b1f836249dc9"
+      }
+    },
+    "seed": 126
+  },
+  "hardware": {
+    "cuda_kernel_probe": true,
+    "cuda_runtime": "12.1",
+    "gpus": [
+      {
+        "capability": [
+          8,
+          9
+        ],
+        "name": "NVIDIA GeForce RTX 4090",
+        "vram_bytes": 25250627584
+      }
+    ],
+    "legacy_compatibility": "UNVALIDATED: Ada has no native sm89 in CUDA11.3; older Ampere/PTX kernels may work; torch1.11/cuDNN coverage not tested. Do not call modern run faithful.",
+    "nvidia_smi": "NVIDIA GeForce RTX 4090, 580.178.04, 24564 MiB",
+    "torch": "2.5.1+cu121",
+    "torchvision": "0.20.1+cu121"
+  },
+  "inventory_path": "outputs/kaggle-api/image_inventory.csv",
+  "legal_devkit_route": {
+    "checksum_reference": "https://docs.pytorch.org/vision/0.20/_modules/torchvision/datasets/imagenet.html",
+    "expected_md5": "fa75699e90414af021442c21a62c3abf",
+    "file": "ILSVRC2012_devkit_t12.tar.gz",
+    "required_members": [
+      "ILSVRC2012_devkit_t12/data/meta.mat",
+      "ILSVRC2012_devkit_t12/data/ILSVRC2012_validation_ground_truth.txt"
+    ],
+    "source": "https://image-net.org/challenges/LSVRC/2012/2012-downloads.php"
+  },
+  "manifests": {
+    "counts": {
+      "holdout": 49000,
+      "selection": 1000,
+      "smoke_holdout": 1000
+    },
+    "dataset": "ILSVRC2012_validation",
+    "manifest_hashes": {
+      "holdout": "a96015afdaeae9040d1be127d715d1a742a39712da308fe8a11bba4fafaa4233",
+      "selection": "9d85658f9542ae90708b3a35373662d50e7740e9d59aa03304a7e6da35854362",
+      "smoke_holdout": "51802ec2f25e8d0a6715818409e74b0f66e76bb158baccec7a36dd5287cc277e"
+    },
+    "path": "manifests/imagenet_val_kaggle_tfds_v1",
+    "schema_version": 1,
+    "seed": 126,
+    "source": {
+      "class_index_sha256": "307f29eccc13428af8a29564d3cb7838039860d8fd19e57c0ee42dcb917a75ec",
+      "class_order": "sorted_WNID_torchvision_ImageFolder",
+      "devkit_sha256": null,
+      "ground_truth_sha256": "313fc3f23c864dde9183c9a368809065765dd1b657a6904fded44e3e46d34604",
+      "independent_reference": {
+        "commit": "252301af4a62f264bddf16491fd0bfe57db8140f",
+        "labels_sha256": "70002b0ff5de60a3a17a82dbfcff291931f96225ddf941ad2e182fc39e183d15",
+        "labels_url": "https://raw.githubusercontent.com/tensorflow/datasets/252301af4a62f264bddf16491fd0bfe57db8140f/tensorflow_datasets/datasets/imagenet2012/labels.txt",
+        "repository": "tensorflow/datasets",
+        "validation_labels_sha256": "313fc3f23c864dde9183c9a368809065765dd1b657a6904fded44e3e46d34604",
+        "validation_labels_url": "https://raw.githubusercontent.com/tensorflow/datasets/252301af4a62f264bddf16491fd0bfe57db8140f/tensorflow_datasets/datasets/imagenet2012/validation_labels.txt"
+      },
+      "kaggle": {
+        "competition_url": "https://www.kaggle.com/competitions/imagenet-object-localization-challenge",
+        "file_name": "LOC_val_solution.csv",
+        "file_sha256": "09811d286325caee803bdeb74d536ece564aa6faf1ebe1e839c70981f3ce9788"
+      },
+      "label_source": "official_kaggle_crosschecked_tfds",
+      "matched_validation_labels": 50000,
+      "official_devkit_verified": false
+    }
+  },
+  "scope": "Engineering smoke only; no faithful E0 or formal E1/E2/E3 result; no full training.",
+  "status": "KAGGLE_VALIDATION_VERIFIED_AND_MODERN_GPU_SMOKE_PASS",
+  "strict_smoke_attempt": {
+    "attempted_step": 1,
+    "completed_steps": 0,
+    "error_reason": "RuntimeError: grid_sampler_2d_backward_cuda does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True)'. You can turn off determinism just for this operation, or you can use the 'warn_only=True' option, if that's acceptable for your application. You can also file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation.",
+    "peak_allocated_vram_bytes": null,
+    "provenance_path": "outputs/gpu-smoke-20261126/full-psp-100-seed126/provenance.json",
+    "provenance_sha256": "651a9353f54ebe1d6002388e4ebe4065929041a2097384299d5e71427a3aa289",
+    "research_commit": "41d2443a8e877b6afae2994bd66d7016120458ad",
+    "status": "failed"
+  },
+  "training_smoke": {
+    "bitwise_gpu_replay_verified": false,
+    "checkpoint_path": "outputs/gpu-smoke-20261126/full-psp-100-seed126-warn/checkpoints/000100.pt",
+    "checkpoint_sha256": "b52d0f61a50a79b365b19feb0f9d24ebc71de2f2b6de996c9ed41a66fd0c4ecf",
+    "config_sha256": "0f96f5f954fdb8d979b487484ff34cd97c90d0862af62c31094d7506e4764036",
+    "elapsed_seconds": 8.377519187051803,
+    "environment": {
+      "cuda": "12.1",
+      "numerical_policy": {
+        "cudnn_benchmark": false,
+        "cudnn_deterministic": true,
+        "cudnn_tf32": false,
+        "deterministic_algorithms": true,
+        "deterministic_warn_only": true,
+        "matmul_tf32": false
+      },
+      "torch": "2.5.1+cu121"
+    },
+    "execution_label": "research_fixed_budget",
+    "exogenous_draws_sha256": "6e08c52bce0987eaa379295741897bbcfbb1452370c84b474ea0f9d747a1f495",
+    "finite_completed_steps": 100,
+    "loss_sha256": "6855a7310c30fbd5bddfefbdb9ca84c2c5732a9aaaecfc316657b4fb8f108982",
+    "peak_allocated_vram_bytes": 2892090368,
+    "prior_draws_sha256": "d53686eac8ac58da353bc57419ea3789ec990f2559a72849b642ea3ba32a1149",
+    "provenance_path": "outputs/gpu-smoke-20261126/full-psp-100-seed126-warn/provenance.json",
+    "provenance_sha256": "7df84443da849475f5d84ee40024ceb5f97a660c7a751fbac86cf69bb02f36f2",
+    "purpose": "smoke",
+    "research_commit": "5697120fc6e11192b1ea39447f163751e4105fa3",
+    "run_id": "train-2e1aca73b667",
+    "rw_on": true,
+    "seed": 126,
+    "status": "complete",
+    "step": 100,
+    "surrogate": "resnet152",
+    "t_on": true,
+    "trace_path": "outputs/gpu-smoke-20261126/full-psp-100-seed126-warn/loss_trace.csv",
+    "trace_sha256": "90211f8d9cbd032ac33b305a46ec7cb16060edc5c7ccd724d3c72502fe1ffd5c",
+    "training_implementation_sha256": "9d765cf73551faf17587843e5fe3d2387e71ebab465126524294e3f35fad4998",
+    "uap_dtype": "float32",
+    "uap_linf": 0.03921568766236305,
+    "uap_path": "outputs/gpu-smoke-20261126/full-psp-100-seed126-warn/uap.npy",
+    "uap_sha256": "eff09a14d4751dfe3840f214327e02dd8d410e6322e41d56b5ff014f8112166c",
+    "uap_shape": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "variant": "full_original",
+    "weights_id": "ResNet152_Weights.IMAGENET1K_V1",
+    "weights_sha256": "394f9c45966e3651a89bbb78a48410a6755854ce4a5ab64927cf1c7247f85e58",
+    "working_tree_dirty": false
+  },
+  "upstream_integrity": {
+    "command": "python3 scripts/check_upstream_integrity.py",
+    "loss_sha256": "6855a7310c30fbd5bddfefbdb9ca84c2c5732a9aaaecfc316657b4fb8f108982",
+    "result": "8 protected files PASS"
+  },
+  "verification_checks": [
+    "All eight real-data target runs have exactly1000 unique prediction rows; raw counts and all metric ratios independently recomputed from predictions.csv.",
+    "Zero-delta identity: ResNet50 and ViT B/16 both have zero flips and identical paired predictions.",
+    "Clean predictions/labels agree across zero, random and trained-UAP runs on each repeated model.",
+    "Manifest bundle hashes/counts and selection/holdout disjointness verified.",
+    "Training trace contains100 consecutive finite steps with10 samples each; exported float32 NCHW UAP is finite and within epsilon10/255.",
+    "All50000 image hashes and WNIDs independently match between extraction inventory and selection+holdout manifests."
+  ],
+  "weights": {
+    "lock_path": "configs/targets/weights.lock.json",
+    "lock_sha256": "d5e2544442bf7135d571be19f7c15594eafa9879191864d0d81a4b2e42c571e0",
+    "path": "models_cache",
+    "targets": {
+      "convnext_base": {
+        "file_name": "convnext_base-6075fbad.pth",
+        "transform_sha256": "bae66aeac604a76a964ad05143b935ade9b74790816affc5d9ebafb99e0435de",
+        "weights_id": "ConvNeXt_Base_Weights.IMAGENET1K_V1",
+        "weights_sha256": "6075fbad31c688f9ed013922a59daf0fc2f4dc12e6e43bc01fa840c7bd1ca2cd"
+      },
+      "densenet121": {
+        "file_name": "densenet121-a639ec97.pth",
+        "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+        "weights_id": "DenseNet121_Weights.IMAGENET1K_V1",
+        "weights_sha256": "a639ec97d7c33b07ae66f0b5fb7d0192f95a3b11b7576c66c0126c2a727c4395"
+      },
+      "resnet152": {
+        "file_name": "resnet152-394f9c45.pth",
+        "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+        "weights_id": "ResNet152_Weights.IMAGENET1K_V1",
+        "weights_sha256": "394f9c45966e3651a89bbb78a48410a6755854ce4a5ab64927cf1c7247f85e58"
+      },
+      "resnet50": {
+        "file_name": "resnet50-0676ba61.pth",
+        "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+        "weights_id": "ResNet50_Weights.IMAGENET1K_V1",
+        "weights_sha256": "0676ba61b6795bbe1773cffd859882e5e297624d384b6993f7c9e683e722fb8a"
+      },
+      "swin_t": {
+        "file_name": "swin_t-704ceda3.pth",
+        "transform_sha256": "e63e24a0385b7546443cf5af69c0eec76ee664eb9f4296d5483737fcf6960999",
+        "weights_id": "Swin_T_Weights.IMAGENET1K_V1",
+        "weights_sha256": "704ceda373461b0a224fcdddd75cd2a5e9f8064512ed47adbddef7f343fd147b"
+      },
+      "vgg16": {
+        "file_name": "vgg16-397923af.pth",
+        "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+        "weights_id": "VGG16_Weights.IMAGENET1K_V1",
+        "weights_sha256": "397923af8e79cdbb6a7127f12361acd7a2f83e06b05044ddf496e83de57a5bf0"
+      },
+      "vit_b_16": {
+        "file_name": "vit_b_16-c867db91.pth",
+        "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+        "weights_id": "ViT_B_16_Weights.IMAGENET1K_V1",
+        "weights_sha256": "c867db91d3e12c6cbadabb610d73c24a546bf82d8c03a9fea34f43a712ddb0e9"
+      }
+    }
+  }
+}

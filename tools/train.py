@@ -15,10 +15,12 @@ from psp_research.config import load_config, validate
 from psp_research.data import verify_bundle
 from psp_research.provenance import git_identity, check_upstream, write_json, sha256, digest
 from psp_research.registry import load_target
-from psp_research.trainer import ControlledTrainer
+from psp_research.trainer import ControlledTrainer, numerical_policy
 
 
 def execute(a):
+    if a.determinism == 'warn' and not a.smoke_steps:
+        raise ValueError('warn-only determinism is currently allowed only for explicitly labeled --smoke-steps')
     c = load_config(a.config)
     if a.smoke_steps is not None:
         if not 1 <= a.smoke_steps <= 200:
@@ -27,7 +29,7 @@ def execute(a):
         c = validate(c)
     resolved = dict(config=c, seed=a.seed, purpose='smoke' if a.smoke_steps else 'full',
                     execution_label='research_fixed_budget', device=a.device,
-                    config_sha256=digest(c))
+                    config_sha256=digest(c), determinism=a.determinism)
     if a.dry_run:
         print(json.dumps(resolved, indent=2))
         return
@@ -37,29 +39,34 @@ def execute(a):
     write_json(out / 'config.resolved.json', resolved)
     write_json(out / 'provenance.json', provenance)
     start = time.perf_counter()
+    runner = None
+    tracking_cuda_memory = False
     try:
         check_upstream()
         if not a.manifest_dir:
-            raise ValueError('BLOCKED: supply devkit-verified --manifest-dir; no real training without validated data pipeline')
+            raise ValueError('BLOCKED: supply provenance-verified --manifest-dir; no real training without validated data pipeline')
         index = verify_bundle(a.manifest_dir)
         if index.get('dataset') != 'ILSVRC2012_validation' or index.get('counts') != {'selection': 1000, 'holdout': 49000, 'smoke_holdout': 1000}:
             raise ValueError('expected full ImageNet validation manifest bundle')
         provenance['manifest_hashes'] = index['manifest_hashes']
         provenance['data_source'] = index['source']
-        torch.use_deterministic_algorithms(True)
+        torch.use_deterministic_algorithms(True, warn_only=a.determinism == 'warn')
         torch.backends.cudnn.benchmark = False
         torch.backends.cudnn.deterministic = True
         torch.backends.cuda.matmul.allow_tf32 = False
         torch.backends.cudnn.allow_tf32 = False
         model, _, weights = load_target(c['surrogate'], a.weights_lock, a.weights_dir, a.device)
         provenance.update(weights_id=weights['weights_id'], weights_sha256=weights['weights_sha256'],
-            environment=dict(torch=torch.__version__, cuda=torch.version.cuda, deterministic_algorithms=True))
+            environment=dict(torch=str(torch.__version__), cuda=torch.version.cuda,
+                             numerical_policy=numerical_policy()))
         runner = ControlledTrainer(model, c, a.seed, a.device)
+        provenance['training_implementation_sha256'] = runner.implementation_sha256
         if a.resume:
             runner.resume(a.resume)
             provenance['resumed_checkpoint_sha256'] = sha256(a.resume)
         if str(a.device).startswith('cuda'):
             torch.cuda.reset_peak_memory_stats()
+            tracking_cuda_memory = True
             torch.cuda.synchronize()
         runner.run(a.stop_after if a.stop_after is not None else c['max_steps'], out)
         if str(a.device).startswith('cuda'):
@@ -71,8 +78,13 @@ def execute(a):
             provenance['uap_sha256'] = sha256(out / 'uap.npy')
     except Exception as e:
         provenance.update(status='failed', error_reason=type(e).__name__ + ': ' + str(e))
+        if runner is not None:
+            provenance.update(step=runner.step,
+                failed_step=runner.step + 1 if runner.step < c['max_steps'] else None)
         raise
     finally:
+        if tracking_cuda_memory:
+            provenance['peak_allocated_vram_bytes'] = torch.cuda.max_memory_allocated()
         provenance['elapsed_seconds'] = time.perf_counter() - start
         write_json(out / 'provenance.json', provenance)
     print(json.dumps(provenance, indent=2))
@@ -90,5 +102,7 @@ if __name__ == '__main__':
     p.add_argument('--resume')
     p.add_argument('--stop-after', type=int, help='absolute step to stop early; incomplete runs export no final UAP')
     p.add_argument('--smoke-steps', type=int, help='separately labeled 1..200 step engineering smoke budget')
+    p.add_argument('--determinism', choices=['strict', 'warn'], default='strict',
+        help='warn permits CUDA nondeterministic operators only in smoke; no bitwise GPU replay claim')
     p.add_argument('--dry-run', action='store_true')
     execute(p.parse_args())

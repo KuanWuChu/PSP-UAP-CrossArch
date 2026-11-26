@@ -142,3 +142,19 @@ def test_full_original_uses_frozen_weighted_loss():
     r = runner.advance()
     assert np.isfinite(r['loss']) and r['samples'] == 2
     assert all(p.grad is None for p in runner.model.parameters())
+
+
+def test_resume_rejects_changed_numerical_policy(tmp_path):
+    previous = (torch.are_deterministic_algorithms_enabled(),
+                torch.is_deterministic_algorithms_warn_only_enabled())
+    try:
+        torch.use_deterministic_algorithms(True)
+        a = ControlledTrainer(fixture_model(), fixture_config(), 126)
+        a.advance()
+        a.save(tmp_path / 'strict.pt')
+        torch.use_deterministic_algorithms(True, warn_only=True)
+        b = ControlledTrainer(fixture_model(), fixture_config(), 126)
+        with pytest.raises(ValueError, match='numerical policy mismatch'):
+            b.resume(tmp_path / 'strict.pt')
+    finally:
+        torch.use_deterministic_algorithms(previous[0], warn_only=previous[1])
