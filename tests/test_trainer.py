@@ -178,6 +178,6 @@ def test_original_first_teacher_updates_batchnorm_but_controlled_model_stays_fro
         assert not model.training and model[1].num_batches_tracked.item()==1
         original_loss.l2_layer_loss_weight(model,images,source,runner.args,2,'cpu')
         assert model[1].num_batches_tracked.item()==1
-        runner.advance()
+        original_loss.l2_layer_loss_weight(runner.model,images,source,runner.args,2,'cpu')
         assert runner.model[1].num_batches_tracked.item()==0
         assert model_hash(runner.model)==runner.model_identity

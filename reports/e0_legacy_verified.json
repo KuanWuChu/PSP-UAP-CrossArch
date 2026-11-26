@@ -1,0 +1,259 @@
+{
+  "baseline_checks": {
+    "alexnet": {
+      "clean_difference": 0.00034000000000000696,
+      "native_difference": 0.00011999999999989797,
+      "native_fr_percent": 58.586000000000006,
+      "paper_five_run_mean_fr_percent": 58.82,
+      "reference_clean_acc": 0.56522,
+      "reloaded_fr": 0.58598,
+      "single_seed_minus_paper_mean_pp": -0.2220000000000084
+    },
+    "googlenet": {
+      "clean_difference": 6.0000000000060005e-05,
+      "native_difference": 2.0000000000020002e-05,
+      "native_fr_percent": 74.924,
+      "paper_five_run_mean_fr_percent": 76.0,
+      "reference_clean_acc": 0.6977800000000001,
+      "reloaded_fr": 0.74926,
+      "single_seed_minus_paper_mean_pp": -1.073999999999998
+    },
+    "resnet152": {
+      "clean_difference": 2.0000000000020002e-05,
+      "native_difference": 2.0000000000020002e-05,
+      "native_fr_percent": 86.932,
+      "paper_five_run_mean_fr_percent": 85.65,
+      "reference_clean_acc": 0.7831199999999999,
+      "reloaded_fr": 0.86934,
+      "single_seed_minus_paper_mean_pp": 1.2839999999999918
+    },
+    "vgg16": {
+      "clean_difference": 5.999999999994898e-05,
+      "native_difference": 2.0000000000131024e-05,
+      "native_fr_percent": 88.25800000000001,
+      "paper_five_run_mean_fr_percent": 88.59,
+      "reference_clean_acc": 0.71592,
+      "reloaded_fr": 0.88256,
+      "single_seed_minus_paper_mean_pp": -0.3340000000000032
+    },
+    "vgg19": {
+      "clean_difference": 0.00017999999999995797,
+      "native_difference": 6.000000000017103e-05,
+      "native_fr_percent": 87.51400000000001,
+      "paper_five_run_mean_fr_percent": 87.35,
+      "reference_clean_acc": 0.7237600000000001,
+      "reloaded_fr": 0.87508,
+      "single_seed_minus_paper_mean_pp": 0.15800000000000125
+    }
+  },
+  "baseline_checks_passed": true,
+  "baseline_record_sha256": "74532a19289d23ed481ff15c53179cbbb8ec98ed42f72e6c437c4919628d2d9a",
+  "data_source": {
+    "acquisition": {
+      "acquisition_type": "public_third_party_mirror_of_original_archive",
+      "bytes": 2568145,
+      "commit": "2e9df66a95fe0ce3a7ad1f957a7d1031e9119568",
+      "copyright_holder": "The ImageNet Project",
+      "license_member": "ILSVRC2012_devkit_t12/COPYING",
+      "license_sha256": "5f4d5e6ba018a1c22c12bcb5d7d9c42c5ffe9672ab0165491203a4111a0b4463",
+      "login_required": false,
+      "md5": "fa75699e90414af021442c21a62c3abf",
+      "notice_preserved": true,
+      "official_md5_reference": "https://docs.pytorch.org/vision/0.20/_modules/torchvision/datasets/imagenet.html",
+      "repository": "https://github.com/0429charlie/ImageNet_metadata",
+      "sha256": "b59243268c0d266621fd587d2018f69e906fb22875aca0e295b48cafaa927953",
+      "terms_acceptance_required": false,
+      "url": "https://raw.githubusercontent.com/0429charlie/ImageNet_metadata/2e9df66a95fe0ce3a7ad1f957a7d1031e9119568/ILSVRC2012_devkit_t12.tar.gz"
+    },
+    "class_index_sha256": "307f29eccc13428af8a29564d3cb7838039860d8fd19e57c0ee42dcb917a75ec",
+    "devkit_md5": "fa75699e90414af021442c21a62c3abf",
+    "devkit_sha256": "b59243268c0d266621fd587d2018f69e906fb22875aca0e295b48cafaa927953",
+    "ground_truth_sha256": "313fc3f23c864dde9183c9a368809065765dd1b657a6904fded44e3e46d34604",
+    "label_source": "official_devkit",
+    "official_devkit_verified": true
+  },
+  "environment": {
+    "cuda": "12.1",
+    "torch": "2.5.1+cu121"
+  },
+  "execution_label": "upstream_legacy_core",
+  "independent_prediction_verification": {
+    "alexnet": {
+      "counts": {
+        "adv_correct_count": 16484,
+        "clean_correct_became_wrong_count": 13185,
+        "clean_correct_count": 28278,
+        "flip_count": 29299,
+        "total_count": 50000
+      },
+      "predictions_path": "outputs/full-experiments-20261126/e0-legacy-original/reloaded/alexnet-predictions.csv",
+      "predictions_sha256": "15dd3b088fdd65647c88b4c73a26e78399e7bce1be0b451d52aef8a50a484a1f",
+      "status": "PASS"
+    },
+    "googlenet": {
+      "counts": {
+        "adv_correct_count": 11200,
+        "clean_correct_became_wrong_count": 24333,
+        "clean_correct_count": 34886,
+        "flip_count": 37463,
+        "total_count": 50000
+      },
+      "predictions_path": "outputs/full-experiments-20261126/e0-legacy-original/reloaded/googlenet-predictions.csv",
+      "predictions_sha256": "6690f361fed1bc6543a6f4079e3ae2211c95ce2d807b16b1349780d81e3ef188",
+      "status": "PASS"
+    },
+    "resnet152": {
+      "counts": {
+        "adv_correct_count": 6108,
+        "clean_correct_became_wrong_count": 33329,
+        "clean_correct_count": 39157,
+        "flip_count": 43467,
+        "total_count": 50000
+      },
+      "predictions_path": "outputs/full-experiments-20261126/e0-legacy-original/reloaded/resnet152-predictions.csv",
+      "predictions_sha256": "f168433a6b519d30676d74e49298230e4af50104245fa5254f359651187d3284",
+      "status": "PASS"
+    },
+    "vgg16": {
+      "counts": {
+        "adv_correct_count": 5471,
+        "clean_correct_became_wrong_count": 30658,
+        "clean_correct_count": 35793,
+        "flip_count": 44128,
+        "total_count": 50000
+      },
+      "predictions_path": "outputs/full-experiments-20261126/e0-legacy-original/reloaded/vgg16-predictions.csv",
+      "predictions_sha256": "fed98f189635d2276e5fd9d9153e709ba12eb496226df88b899d8ae4a3d21b44",
+      "status": "PASS"
+    },
+    "vgg19": {
+      "counts": {
+        "adv_correct_count": 5769,
+        "clean_correct_became_wrong_count": 30772,
+        "clean_correct_count": 36197,
+        "flip_count": 43754,
+        "total_count": 50000
+      },
+      "predictions_path": "outputs/full-experiments-20261126/e0-legacy-original/reloaded/vgg19-predictions.csv",
+      "predictions_sha256": "a52dbf7a71c7b031c91224268f4d3ca44ec94ef5a953f69dd1b1a50421ce59ba",
+      "status": "PASS"
+    }
+  },
+  "local_baseline_record": "outputs/full-experiments-20261126/baseline-validated.json",
+  "loss_sha256": "6855a7310c30fbd5bddfefbdb9ca84c2c5732a9aaaecfc316657b4fb8f108982",
+  "manifest_hashes": {
+    "holdout": "a96015afdaeae9040d1be127d715d1a742a39712da308fe8a11bba4fafaa4233",
+    "selection": "9d85658f9542ae90708b3a35373662d50e7740e9d59aa03304a7e6da35854362",
+    "smoke_holdout": "51802ec2f25e8d0a6715818409e74b0f66e76bb158baccec7a36dd5287cc277e"
+  },
+  "native_execution": {
+    "elapsed_seconds": 1126.894202456111,
+    "image": "psp-uap-legacy:core-20261126",
+    "image_identity": "sha256:cd1baba39d9b2c867ee4c32563a2b6764a2a4e0531bb4ccdded4f1bf8a4362b2",
+    "returncode": 0,
+    "upstream_commit": "dbbc4ee8ee66b6cd5286b939d7254fd7edcbfb8c"
+  },
+  "native_last_reported_progress": 4315,
+  "native_log_sha256": "b8278526241dcd0208fdd5859ad9c0805786a7f0c8b381a59a95880e913f7cfd",
+  "native_numpy_seeded": false,
+  "native_source_commit": "dbbc4ee8ee66b6cd5286b939d7254fd7edcbfb8c",
+  "original_bugs_preserved": true,
+  "paper_comparison": "Single seed; does not establish reproduction of paper five-run mean/std",
+  "paper_reference": "https://openaccess.thecvf.com/content/CVPR2025/papers/Lee_Data-free_Universal_Adversarial_Perturbation_with_Pseudo-semantic_Prior_CVPR_2025_paper.pdf",
+  "research_commit": "4e35bd06eb49b8173a44ac6ae77c2bb28765bd7a",
+  "stage": "e0_full_validation",
+  "status": "complete",
+  "stopping_selection_overlap": true,
+  "targets": {
+    "alexnet": {
+      "adv_acc": 0.32968,
+      "adv_correct_count": 16484,
+      "cc_asr": 0.46626352641629537,
+      "cc_asr_reason": null,
+      "clean_acc": 0.56556,
+      "clean_correct_became_wrong_count": 13185,
+      "clean_correct_count": 28278,
+      "elapsed_seconds": 39.014185989042744,
+      "flip_count": 29299,
+      "fr": 0.58598,
+      "target": "alexnet",
+      "total_count": 50000,
+      "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+      "weights_id": "AlexNet_Weights.IMAGENET1K_V1",
+      "weights_sha256": "7be5be791159472b1fbf3c69796f7cb30dca7ad8466c2df70058c37116cdee02"
+    },
+    "googlenet": {
+      "adv_acc": 0.224,
+      "adv_correct_count": 11200,
+      "cc_asr": 0.6975004299719085,
+      "cc_asr_reason": null,
+      "clean_acc": 0.69772,
+      "clean_correct_became_wrong_count": 24333,
+      "clean_correct_count": 34886,
+      "elapsed_seconds": 39.392648787936196,
+      "flip_count": 37463,
+      "fr": 0.74926,
+      "target": "googlenet",
+      "total_count": 50000,
+      "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+      "weights_id": "GoogLeNet_Weights.IMAGENET1K_V1",
+      "weights_sha256": "1378be20a8e875cf1568b8a71654e704449655e34711a959a38b04fb34905cef"
+    },
+    "resnet152": {
+      "adv_acc": 0.12216,
+      "adv_correct_count": 6108,
+      "cc_asr": 0.8511632658273106,
+      "cc_asr_reason": null,
+      "clean_acc": 0.78314,
+      "clean_correct_became_wrong_count": 33329,
+      "clean_correct_count": 39157,
+      "elapsed_seconds": 105.01555127417669,
+      "flip_count": 43467,
+      "fr": 0.86934,
+      "target": "resnet152",
+      "total_count": 50000,
+      "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+      "weights_id": "ResNet152_Weights.IMAGENET1K_V1",
+      "weights_sha256": "394f9c45966e3651a89bbb78a48410a6755854ce4a5ab64927cf1c7247f85e58"
+    },
+    "vgg16": {
+      "adv_acc": 0.10942,
+      "adv_correct_count": 5471,
+      "cc_asr": 0.8565361942279217,
+      "cc_asr_reason": null,
+      "clean_acc": 0.71586,
+      "clean_correct_became_wrong_count": 30658,
+      "clean_correct_count": 35793,
+      "elapsed_seconds": 81.42760917684063,
+      "flip_count": 44128,
+      "fr": 0.88256,
+      "target": "vgg16",
+      "total_count": 50000,
+      "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+      "weights_id": "VGG16_Weights.IMAGENET1K_V1",
+      "weights_sha256": "397923af8e79cdbb6a7127f12361acd7a2f83e06b05044ddf496e83de57a5bf0"
+    },
+    "vgg19": {
+      "adv_acc": 0.11538,
+      "adv_correct_count": 5769,
+      "cc_asr": 0.8501257010249468,
+      "cc_asr_reason": null,
+      "clean_acc": 0.72394,
+      "clean_correct_became_wrong_count": 30772,
+      "clean_correct_count": 36197,
+      "elapsed_seconds": 93.42515574302524,
+      "flip_count": 43754,
+      "fr": 0.87508,
+      "target": "vgg19",
+      "total_count": 50000,
+      "transform_sha256": "afa41493c85516f8138b0afb5a5a937d3b3d51dbaf6b18b4e7da955aace9d27a",
+      "weights_id": "VGG19_Weights.IMAGENET1K_V1",
+      "weights_sha256": "dcbb9e9dad569fff7a846263a77324fc34978fea2bfb039c012d710e1776ae44"
+    }
+  },
+  "uap_path": "outputs/full-experiments-20261126/e0-legacy-original/source/results/additional/uap_reweight_3.0_6_10_resnet152_dataset=imagenet_p_rate=0.65_seed=126_prior=jigsaw_True.npy",
+  "uap_sha256": "83a6710107b7d8b06d06350559c7f6c6c8b600369ec4b28eba67509138136049",
+  "upstream_commit": "dbbc4ee8ee66b6cd5286b939d7254fd7edcbfb8c",
+  "weights_lock_sha256": "8915e905b63a265de169889d99036c8ba5325e82e9c0c0dbf7f4d22a5b2ab02e",
+  "working_tree_dirty": false
+}

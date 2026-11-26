@@ -1,3 +1,5 @@
+# 目前已暫停：先讀 [HANDOFF_PAUSED](HANDOFF_PAUSED_ZH.md)
+
 # 完整實驗執行與 GitHub 維護
 
 先完成 E0 原碼執行、實際 UAP／五個 CNN 的50,000張重新評估及來源檢查，才允許15-run研究矩陣啟動。完整訓練已獲授權；不自動 merge。
@@ -66,3 +68,5 @@ OMP_NUM_THREADS=4 .venv/bin/python tools/run_matrix.py --baseline-record outputs
 公開匯出採檔案白名單，且檢查個人路徑／token樣式；不包含ImageNet影像、分類權重或私有log。先前smoke與原始資料來源紀錄不回寫。`pytest.ini`限制project fixtures，避免掃入本機legacy環境和worktrees。71項CPU fixtures通過；這是軟體驗證，不是正式矩陣已完成。
 
 使用者目前要求暫停push；自動GitHub推送／PR／release callback已停用，本機產物保留。最新本機交接快照：`reports/execution_checkpoint.json`。查詢本機進度：`.venv/bin/python tools/experiment_status.py`。
+
+目前已完成E0工程檢查並依使用者指示暫停；沒有啟動正式矩陣。自動stage controller已停止，本次僅手動push一次，不發布release。

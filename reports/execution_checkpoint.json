@@ -1,11 +1,17 @@
 {
-  "captured_at_utc": "2026-11-26T01:54:17.748180+00:00",
-  "cpu_tests": "72 passed in5.10s",
-  "formal_matrix": "NOT_STARTED: waiting for verified E0",
-  "github_publication": "PAUSED by user; automatic push/PR/release callback disabled",
-  "legacy_e0": "RUNNING in declared Ubuntu20.04 legacy core",
+  "all_project_experiment_processes_stopped": true,
+  "baseline_record": "outputs/full-experiments-20261126/baseline-validated.json",
+  "baseline_record_sha256": "74532a19289d23ed481ff15c53179cbbb8ec98ed42f72e6c437c4919628d2d9a",
+  "captured_at_utc": "2026-11-26T02:07:55.000859+00:00",
+  "cpu_tests": "72 passed in 5.59s",
+  "formal_matrix": "NOT_RUN:15 training runs /90 final evaluations remain unstarted by user request",
+  "github_publication": "ONE_MANUAL_PUSH_AUTHORIZED; automatic push/PR/release callbacks remain disabled",
+  "legacy_e0": "COMPLETE: original-source run and five independent50k reloaded checks PASS",
+  "legacy_uap_sha256": "83a6710107b7d8b06d06350559c7f6c6c8b600369ec4b28eba67509138136049",
   "matrix_source_commit": "2fdf46e7610c8c4d184655f1246afe5e17587e0d",
-  "modern_e0": "COMPLETE: original5-CNN50k native evaluation; see e0_modern_original.json",
+  "modern_e0": "COMPLETE: original5-CNN50k native evaluation",
+  "modern_uap_sha256": "fae3aa29f35e45010b9f67b4cece7eebe801e59d6d726548815a59869dfdd991",
   "original_protected_files": "8-file integrity PASS",
-  "scope_note": "Local checkpoint only; no completed-matrix or paper five-run reproduction claim"
+  "scope_note": "Single-seed original execution and engineering checks; not a reproduction of paper five-run mean/std",
+  "status": "PAUSED_AT_VERIFIED_E0_HANDOFF"
 }

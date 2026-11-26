@@ -2,7 +2,7 @@
 
 2026-11-25，115_1作業。這是以 CVPR 2025 PSP-UAP 官方程式為基礎的研究擴充計畫。
 
-**2026-11-26：公開 native fork 已驗證。Kaggle validation 全部 50,000 張已下載並驗證，標籤與固定 TFDS 版本逐張核對，manifests 已建立。72 項 CPU 測試、100-step ResNet152 相容模式及 CNN／ConvNeXt／Swin／ViT GPU smoke 通過。原始 devkit 已從保留授權聲明的公開副本取得，官方 MD5 與全部 mapping 核對通過；E0 官方原碼完整執行中，15-run研究矩陣待baseline驗證後啟動；尚未宣稱正式結果完成。**
+**2026-11-26：已在交接點暫停。資料／devkit／manifests／72項CPU fixtures已驗證，E0原碼單seed執行及五CNN獨立50,000張計數檢查完成。正式15-run E1/E2/E3矩陣尚未啟動；不宣稱已重現論文五seed平均。**
 
 完整實驗與GitHub維護入口：[FULL_EXECUTION](docs/FULL_EXECUTION_ZH.md)。
 
@@ -41,3 +41,5 @@ devkit 後續驗證與命令：[官方 devkit mapping 驗證](docs/DEVKIT_VERIFI
 
 本 repo 暫時保留官方 `README.md` 與全部 Python 原檔；後續功能請使用新的 research package，與官方復現路徑分離。
 `configs/planned/` 只是規格資料，沒有可執行 training runner；不能把它們當成已完成程式。
+
+本次暫停交接與恢復入口：[HANDOFF_PAUSED](docs/HANDOFF_PAUSED_ZH.md)。自動推送／發布關閉，不自動merge。

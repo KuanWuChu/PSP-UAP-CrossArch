@@ -1,5 +1,7 @@
 # Implementation status — 2026-11-26
 
+**PAUSED at user-requested handoff. Verified single-seed E0 complete; formal matrix not started.** See [handoff/resume commands](HANDOFF_PAUSED_ZH.md).
+
 | Item | State |
 |---|---|
 | Handoff ZIP / Git bundle | SHA256 VERIFIED; full history restored |
@@ -9,7 +11,7 @@
 | Doctor / manifest builder / strict config | IMPLEMENTED; CPU fixtures |
 | Target registry / .npy evaluator | IMPLEMENTED; checkpoint lock records exact enums/transforms/full hashes |
 | Modern CUDA probe | PASS on RTX4090; torch2.5.1+cu121 / torchvision0.20.1+cu121 |
-| Legacy declared core environment | PASS: Ubuntu20.04 / Python3.8 / torch1.11 / vision0.12 / CUDA11.3 convolution backward on RTX4090; full baseline pending |
+| Legacy declared core environment | PASS: original full E0 run on Ubuntu20.04 /Python3.8 /torch1.11 /vision0.12 /CUDA11.3 |
 | ImageNet validation / real manifests | VERIFIED: Kaggle50000; CRC32/JPEG/SHA256; selection1000 / disjoint holdout49000 / smoke1000 |
 | Label mapping | VERIFIED: all50000 Kaggle/TFDS labels and1000 sorted WNIDs also match original devkit through independent torchvision parser |
 | Official-source manifests | VERIFIED: separate devkit source index; all3 CSVs byte-identical to previous split |
@@ -18,8 +20,8 @@
 | Controlled trainer / E2 A/B/C | IMPLEMENTED; CPU detach/replay/immutable checkpoint/resume/finite fixtures PASS |
 | GPU100-step trainer smoke | PASS in explicit warn-only mode: ResNet152 full PSP T/RW, seed126, finite100 steps; strict mode failed on CUDA grid-sampler determinism |
 | E3 crop configs / aggregation | IMPLEMENTED; fixed area ranges, paired ΔFR and seed-summary CPU fixtures PASS |
-| E0 | Modern original run COMPLETE: native5-CNN50k FR and finite UAP verified; Ubuntu20.04 legacy run RUNNING; no paper five-run reproduction claim |
-| E1 / E2 / E3 formal matrix | IMPLEMENTED: verified-E0 gate,15 runs /90 evaluations; not started until baseline checks pass |
+| E0 | COMPLETE: modern original run and legacy-core original run; independent five-CNN50k baseline checks PASS; single seed |
+| E1 / E2 / E3 formal matrix | PAUSED/NOT_RUN by user request:15 training runs and90 final records not started |
 | GitHub CI | CPU fixtures and8-file integrity workflow implemented |
 | Teammate invitation request | PENDING GitHub username; email search did not identify an account; no invitation sent |
 
@@ -28,10 +30,12 @@ CPU fixture metrics are software checks, not ImageNet measurements. Missing resu
 
 Current evidence: [Kaggle/GPU smoke report](../reports/kaggle_gpu_smoke_validation.json) and [commands/integrity limits](KAGGLE_DATA_SMOKE_ZH.md). Earlier validation reports retain their historical blocker snapshots.
 
-GPU smoke is modern compatibility, not faithful E0. Warn-only CUDA grid-sampler backward can be nondeterministic; exact GPU replay is unverified. Original validation-tar MD5 is not verified because images came from the authenticated Kaggle ZIP. No final49000-image evaluation or full training was run.
+GPU smoke is modern compatibility, not faithful E0. Warn-only CUDA grid-sampler backward can be nondeterministic; exact GPU replay is unverified. Original validation-tar MD5 is not verified because images came from the authenticated Kaggle ZIP. No formal49000-image research evaluation or15-run matrix training was run. Original-source E0 has since completed; see latest handoff.
 
 Devkit follow-up: [acquisition/license/crosscheck](DEVKIT_VERIFICATION_ZH.md), [machine-readable evidence](../reports/devkit_mapping_verification.json); CPU67 passed. Original devkit blocker is resolved. Prior smoke provenance is preserved; no training/evaluation was launched in this follow-up.
 
 Full execution: [runbook](FULL_EXECUTION_ZH.md), [actual environment probe](../reports/full_execution_environment.json). CPU70 passed. Earlier reports remain historical snapshots; no completed-matrix claim.
 
 Original modern full run: [actual native FR and UAP hash](../reports/e0_modern_original.json). Current CPU71 passed; complete-matrix result packaging has not run yet.
+
+Current validation: CPU72 passed; [verified legacy E0](../reports/e0_legacy_verified.json), [pause checkpoint](../reports/execution_checkpoint.json). No project training/evaluation remains running; automatic stage/publication controllers are disabled. One manual handoff push only; no merge/release.
