@@ -1,0 +1,54 @@
+{
+  "environment": {
+    "cuda": "12.1",
+    "driver": "580.178.04",
+    "gpu": "RTX4090",
+    "python": "3.10.12",
+    "torch": "2.5.1+cu121",
+    "torchvision": "0.20.1+cu121"
+  },
+  "execution_label": "upstream_modern_compatibility",
+  "iteration_count_note": "Native tqdm count is reported; original code did not export an exact final iteration counter.",
+  "last_native_progress_count": 5611,
+  "limitations": [
+    "Single modern compatibility run, not the paper five-run mean/std",
+    "Native full-data FR only; independent accuracy/raw-count baseline gate is being run separately in the declared legacy core",
+    "Original source stopping/alias/NumPy/jigsaw behaviors preserved; research fixed-budget runs remain separate"
+  ],
+  "manifest_hashes": {
+    "holdout": "a96015afdaeae9040d1be127d715d1a742a39712da308fe8a11bba4fafaa4233",
+    "selection": "9d85658f9542ae90708b3a35373662d50e7740e9d59aa03304a7e6da35854362",
+    "smoke_holdout": "51802ec2f25e8d0a6715818409e74b0f66e76bb158baccec7a36dd5287cc277e"
+  },
+  "max_iteration_budget": 10000,
+  "native_fooling_rate_percent": {
+    "alexnet": 57.288,
+    "googlenet": 74.202,
+    "resnet152": 84.906,
+    "vgg16": 87.35199999999999,
+    "vgg19": 87.496
+  },
+  "native_log_sha256": "3869c290c0f75d1c6b298e3770af73da485f6624a230e5b711086db7a4b73ae3",
+  "native_progress_log_sha256": "a4674333257d03fe0504537c73dfccd2ec4afa3f1899f915780834f25cd547d0",
+  "numpy_seeded": false,
+  "original_source_unchanged": true,
+  "seed": 126,
+  "status": "ORIGINAL_MODERN_FULL_RUN_COMPLETE",
+  "stopping": "original cumulative non-improvement counter",
+  "stopping_selection_overlap": true,
+  "total_validation_images": 50000,
+  "uap": {
+    "dtype": "float32",
+    "linf": 0.03921568766236305,
+    "path": "outputs/full-experiments-20261126/e0-modern-original/source/results/additional/uap_reweight_3.0_6_10_resnet152_dataset=imagenet_p_rate=0.65_seed=126_prior=jigsaw_True.npy",
+    "sha256": "fae3aa29f35e45010b9f67b4cece7eebe801e59d6d726548815a59869dfdd991",
+    "shape": [
+      1,
+      3,
+      224,
+      224
+    ]
+  },
+  "upstream_commit": "dbbc4ee8ee66b6cd5286b939d7254fd7edcbfb8c",
+  "weights_lock_sha256": "8915e905b63a265de169889d99036c8ba5325e82e9c0c0dbf7f4d22a5b2ab02e"
+}

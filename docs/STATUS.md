@@ -18,7 +18,7 @@
 | Controlled trainer / E2 A/B/C | IMPLEMENTED; CPU detach/replay/immutable checkpoint/resume/finite fixtures PASS |
 | GPU100-step trainer smoke | PASS in explicit warn-only mode: ResNet152 full PSP T/RW, seed126, finite100 steps; strict mode failed on CUDA grid-sampler determinism |
 | E3 crop configs / aggregation | IMPLEMENTED; fixed area ranges, paired ΔFR and seed-summary CPU fixtures PASS |
-| E0 | RUNNING: isolated unchanged upstream modern run; legacy baseline queued; no paper reproduction claim |
+| E0 | Modern original run COMPLETE: native5-CNN50k FR and finite UAP verified; Ubuntu20.04 legacy run RUNNING; no paper five-run reproduction claim |
 | E1 / E2 / E3 formal matrix | IMPLEMENTED: verified-E0 gate,15 runs /90 evaluations; not started until baseline checks pass |
 | GitHub CI | CPU fixtures and8-file integrity workflow implemented |
 | Teammate invitation request | PENDING GitHub username; email search did not identify an account; no invitation sent |
@@ -33,3 +33,5 @@ GPU smoke is modern compatibility, not faithful E0. Warn-only CUDA grid-sampler 
 Devkit follow-up: [acquisition/license/crosscheck](DEVKIT_VERIFICATION_ZH.md), [machine-readable evidence](../reports/devkit_mapping_verification.json); CPU67 passed. Original devkit blocker is resolved. Prior smoke provenance is preserved; no training/evaluation was launched in this follow-up.
 
 Full execution: [runbook](FULL_EXECUTION_ZH.md), [actual environment probe](../reports/full_execution_environment.json). CPU70 passed. Earlier reports remain historical snapshots; no completed-matrix claim.
+
+Original modern full run: [actual native FR and UAP hash](../reports/e0_modern_original.json). Current CPU71 passed; complete-matrix result packaging has not run yet.
