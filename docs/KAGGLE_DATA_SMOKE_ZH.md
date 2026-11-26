@@ -1,5 +1,7 @@
 # Kaggle validation acquisition and engineering smoke
 
+Historical acquisition/smoke record: the original devkit was unavailable during these runs. It was subsequently obtained and all mapping entries crosschecked successfully; see [devkit follow-up](DEVKIT_VERIFICATION_ZH.md). Earlier run provenance and this report's source hashes are preserved.
+
 Kaggle API uses the user's local credential file `~/.kaggle/kaggle.json`, directory0700/file0600. Credentials, signed download URLs, source images and raw private logs are excluded from Git. The user accepted the ImageNet competition rules; a successful data download confirmed access. No full training is authorized in this stage.
 
 ## Dataset and integrity route
@@ -11,7 +13,7 @@ The Kaggle competition ZIP contains all splits. The acquisition utilities inspec
 
 The extracted images are checked against ZIP central-directory CRC32, original file sizes and JPEG validity; every extracted image and each downloaded chunk gets a SHA256. `tools/extract_validation_parts.py` supports ZIP64 local-header sizes and reads across chunk boundaries. This is a Kaggle ZIP acquisition, so the MD5 of the original `ILSVRC2012_img_val.tar` is **not** claimed verified.
 
-The original `ILSVRC2012_devkit_t12.tar.gz` is still unavailable from the currently unreachable ImageNet host, and it is not present in the competition ZIP. It is **not** synthesized or relabeled as downloaded. Official expected MD5 remains `fa75699e90414af021442c21a62c3abf`.
+At the time of the smoke, the original `ILSVRC2012_devkit_t12.tar.gz` was unavailable from the currently unreachable ImageNet host, and it is not present in the competition ZIP. It is **not** synthesized or relabeled as downloaded. Official expected MD5 remains `fa75699e90414af021442c21a62c3abf`.
 
 ## Explicit alternative label provenance
 
@@ -101,9 +103,9 @@ OMP_NUM_THREADS=4 .venv/bin/python tools/train.py --config configs/experiments/f
 
 Warn-only determinism is explicitly limited to smoke by the CLI. Numerical flags are preserved in checkpoints; a different policy is rejected at resume. `loss.py` remains unchanged. E0 and formal E1/E2/E3, final49000-image evaluation and full training remain NOT_RUN.
 
-## Remaining BLOCKED: original Task1&2 devkit
+## Original Task1&2 devkit: historical blocker, now resolved
 
-The user has no local copy; the official ImageNet host times out. The authenticated competition ZIP central-directory scan contains no devkit. Missing original archive: `ILSVRC2012_devkit_t12.tar.gz`, including `ILSVRC2012_devkit_t12/data/meta.mat` and `data/ILSVRC2012_validation_ground_truth.txt`.
+Before the follow-up, the user had no local copy; the official ImageNet host timed out. The authenticated competition ZIP central-directory scan contains no devkit. Missing original archive: `ILSVRC2012_devkit_t12.tar.gz`, including `ILSVRC2012_devkit_t12/data/meta.mat` and `data/ILSVRC2012_validation_ground_truth.txt`.
 
 Legitimate acquisition: use the [official ILSVRC2012 download page](https://image-net.org/challenges/LSVRC/2012/2012-downloads.php) with the user's authorized ImageNet account when reachable; let the user handle any login/terms. The expected MD5 is recorded by [torchvision0.20's ImageNet loader](https://docs.pytorch.org/vision/0.20/_modules/torchvision/datasets/imagenet.html). Do not substitute an unverified archive or call the Kaggle/TFDS bundle a devkit.
 
@@ -115,4 +117,4 @@ cmp labels/imagenet2012_official_devkit_v1/validation_wnids.txt labels/imagenet2
 cmp labels/imagenet2012_official_devkit_v1/class_index.json labels/imagenet2012_kaggle_tfds_v1/class_index.json
 ```
 
-The CLI requires MD5 `fa75699e90414af021442c21a62c3abf`; a mismatch fails before extraction. These devkit commands have **not** been run against the missing original archive.
+The CLI requires MD5 `fa75699e90414af021442c21a62c3abf`; a mismatch fails before extraction. These devkit commands were subsequently run against the checksum-matching original archive; all comparisons passed. See the [follow-up report and repeatable verification command](DEVKIT_VERIFICATION_ZH.md).

@@ -2,7 +2,9 @@
 
 2026-11-25，115_1作業。這是以 CVPR 2025 PSP-UAP 官方程式為基礎的研究擴充計畫。
 
-**2026-11-26：公開 native fork 已驗證。Kaggle validation 全部 50,000 張已下載並驗證，標籤與固定 TFDS 版本逐張核對，manifests 已建立。62 項 CPU 測試、100-step ResNet152 相容模式及 CNN／ConvNeXt／Swin／ViT GPU smoke 通過。原始官方 devkit 仍缺；完整訓練與正式 E0–E3 尚未執行。**
+**2026-11-26：公開 native fork 已驗證。Kaggle validation 全部 50,000 張已下載並驗證，標籤與固定 TFDS 版本逐張核對，manifests 已建立。67 項 CPU 測試、100-step ResNet152 相容模式及 CNN／ConvNeXt／Swin／ViT GPU smoke 通過。原始 devkit 已從保留授權聲明的公開副本取得，官方 MD5 與全部 mapping 核對通過；完整訓練與正式 E0–E3 尚未執行。**
+
+devkit 後續驗證與命令：[官方 devkit mapping 驗證](docs/DEVKIT_VERIFICATION_ZH.md)。
 
 本次實測與重跑命令：[Kaggle 資料與 GPU smoke](docs/KAGGLE_DATA_SMOKE_ZH.md)；完整 hash／原始計數摘要：[驗證報告](reports/kaggle_gpu_smoke_validation.json)。
 
@@ -11,7 +13,7 @@
 - 官方： https://github.com/ChanhuiLee1111/PSP-UAP
 - 固定原始 commit：`dbbc4ee8ee66b6cd5286b939d7254fd7edcbfb8c`
 - 預定公開 fork：[KuanWuChu/PSP-UAP-CrossArch](https://github.com/KuanWuChu/PSP-UAP-CrossArch)
-- 本次 feature branch：`feat/kaggle-data-smoke`（以 PR 交付，未自動 merge）
+- 本次 feature branch：`feat/devkit-mapping-verification`（以 PR 交付，未自動 merge）
 - 原碼基準 tag：`research/upstream-20261125`
 - 授權：沿用官方 MIT License，保留作者著作權與論文引用。
 
